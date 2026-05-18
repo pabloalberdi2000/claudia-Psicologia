@@ -31,7 +31,7 @@ export default function SobreMi() {
           </div>
         </div>
         <div className="w-full md:w-7/12 space-y-stack-sm">
-          <h2 className="font-headline-md text-headline-md text-primary">Claudia García Psicóloga</h2>
+          <h2 className="font-headline-md text-headline-md text-primary">Claudia González Psicóloga</h2>
           <p className="font-body-lg text-body-lg text-on-surface-variant font-semibold mb-4">
             Psicóloga General Sanitaria
           </p>
