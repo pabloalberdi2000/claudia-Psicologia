@@ -21,7 +21,7 @@ export default function Home() {
               Reservar primera sesión gratuita
             </Link>
             <a
-              href="https://wa.me/34666666666"
+              href="https://wa.me/34682638679"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary px-8 py-4 rounded-full font-label-md flex items-center gap-2 hover:bg-secondary/5 hover:scale-[0.98]"
@@ -182,7 +182,7 @@ export default function Home() {
           <Link href="/contacto" className="btn-primary px-8 py-4 rounded-full font-label-md hover:scale-[0.98]">
             Reservar sesión gratuita
           </Link>
-          <a href="https://wa.me/34666666666" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 rounded-full font-label-md hover:bg-secondary/5 hover:scale-[0.98]">
+          <a href="https://wa.me/34682638679" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 rounded-full font-label-md hover:bg-secondary/5 hover:scale-[0.98]">
             WhatsApp
           </a>
         </div>

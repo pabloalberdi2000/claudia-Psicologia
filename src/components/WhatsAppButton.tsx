@@ -1,7 +1,7 @@
 'use client'
 
 const WhatsAppButton = () => {
-  const whatsappNumber = '34666666666'
+  const whatsappNumber = '34682638679'
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hola,%20me%20gustaría%20consultar%20sobre%20los%20servicios%20de%20terapia%20online.`
 
   return (

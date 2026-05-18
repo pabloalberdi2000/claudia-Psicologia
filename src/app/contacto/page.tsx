@@ -62,7 +62,7 @@ export default function Contacto() {
               La forma más rápida de contactarme. Respondo generalmente en menos de 24 horas.
             </p>
             <a
-              href="https://wa.me/34666666666?text=Hola%20CGapsicologia,%20me%20gustaría%20agendar%20una%20sesión%20gratuita"
+              href="https://wa.me/34682638679?text=Hola%20CGapsicologia,%20me%20gustaría%20agendar%20una%20sesión%20gratuita"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 bg-[#25D366] text-white rounded-full font-label-md hover:scale-105 transition-transform"
@@ -79,7 +79,7 @@ export default function Contacto() {
               Llamada directa. Disponible de lunes a viernes, 10h-20h.
             </p>
             <a
-              href="tel:+34666666666"
+              href="tel:+34682638679"
               className="inline-block px-6 py-3 bg-secondary text-on-secondary rounded-full font-label-md hover:scale-105 transition-transform"
             >
               Llamar ahora
