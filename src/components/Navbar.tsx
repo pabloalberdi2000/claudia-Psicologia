@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 
 const Navbar = () => {
@@ -8,10 +9,18 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 bg-brand-light border-b border-brand-gold border-opacity-20">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
         {/* Logo/Brand */}
-        <Link href="/" className="text-2xl font-bold text-brand-dark hover:text-brand-gold transition-colors">
-          CG Psicología
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Image
+            src="/cgapsicologia.png"
+            alt="cgapsicologia"
+            width={50}
+            height={40}
+            className="h-10 w-auto"
+            priority
+          />
+          <span className="text-xl font-bold text-brand-dark hidden sm:inline">cgapsicologia</span>
         </Link>
 
         {/* Desktop Menu */}

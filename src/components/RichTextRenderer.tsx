@@ -1,7 +1,7 @@
 'use client'
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS, MARKS, Inline } from '@contentful/rich-text-types'
+import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 import type { Document } from '@contentful/rich-text-types'
 import React, { ReactNode } from 'react'
 

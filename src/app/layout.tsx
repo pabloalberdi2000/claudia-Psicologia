@@ -5,14 +5,26 @@ import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 export const metadata: Metadata = {
-  title: 'CG Psicología | Terapia Online Profesional',
+  title: 'cgapsicologia | Terapia Online Profesional',
   description: 'Psicóloga General Sanitaria especializada en terapia online para adultos, familias e infancia-adolescencia. Primera sesión gratuita.',
   keywords: 'psicología, terapia online, psicóloga, asesoramiento familiar, terapia infantil',
-  authors: [{ name: 'CG Psicología' }],
+  authors: [{ name: 'cgapsicologia' }],
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/cgapsicologia.png',
+  },
   openGraph: {
-    title: 'CG Psicología | Terapia Online Profesional',
+    title: 'cgapsicologia | Terapia Online Profesional',
     description: 'Terapia online especializada en adultos, familias e infancia-adolescencia',
     type: 'website',
+    images: [
+      {
+        url: '/cgapsicologia.png',
+        width: 1040,
+        height: 781,
+        alt: 'cgapsicologia Logo',
+      },
+    ],
   },
 }
 

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -9,7 +10,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-brand-gold">CG Psicología</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/cgapsicologia.png"
+                alt="cgapsicologia Logo"
+                width={60}
+                height={50}
+                className="h-12 w-auto rounded"
+              />
+              <h3 className="text-xl font-semibold text-brand-gold">cgapsicologia</h3>
+            </div>
             <p className="text-gray-300 text-sm">
               Psicóloga General Sanitaria especializada en terapia online para adultos, familias e infancia-adolescencia.
             </p>
@@ -73,7 +83,7 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-brand-gold border-opacity-30 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <p>&copy; {currentYear} CG Psicología. Todos los derechos reservados.</p>
+            <p>&copy; {currentYear} cgapsicologia. Todos los derechos reservados.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
               <Link href="/privacidad" className="hover:text-brand-gold transition-colors">
                 Privacidad

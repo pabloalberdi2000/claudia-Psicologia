@@ -1,4 +1,4 @@
-# 🧠 CG Psicología - Guía de Desarrollo
+# 🧠 cgapsicologia - Guía de Desarrollo
 
 Este documento contiene instrucciones para futuros desarrollos y mantenimiento del proyecto.
 
@@ -310,7 +310,7 @@ import Navbar from '../Navbar'
 describe('Navbar', () => {
   it('renders logo', () => {
     render(<Navbar />)
-    expect(screen.getByText('CG Psicología')).toBeInTheDocument()
+    expect(screen.getByText('cgapsicologia')).toBeInTheDocument()
   })
 })
 ```

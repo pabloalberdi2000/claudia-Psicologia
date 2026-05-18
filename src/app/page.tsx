@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -6,7 +7,16 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-brand-light py-20 md:py-32 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8 w-24 h-24 mx-auto bg-gradient-to-br from-brand-dark to-brand-gold rounded-full opacity-10"></div>
+          <div className="mb-8 flex justify-center">
+            <Image
+              src="/cgapsicologia.png"
+              alt="cgapsicologia Logo"
+              width={150}
+              height={120}
+              className="h-32 w-auto rounded-lg shadow-md"
+              priority
+            />
+          </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-brand-dark mb-6 leading-tight">
             Psicóloga General Sanitaria especializada en terapia online

@@ -1,6 +1,6 @@
-# 🧠 CG Psicología - Web Corporativa
+# 🧠 cgapsicologia - Web Corporativa
 
-Página web profesional para la psicóloga online **CG Psicología**, especializada en terapia online para adultos, familias e infancia-adolescencia.
+Página web profesional para la psicóloga online **cgapsicologia**, especializada en terapia online para adultos, familias e infancia-adolescencia.
 
 ## 🎨 Descripción del Proyecto
 
@@ -109,7 +109,7 @@ cgapsicologia/
 
 ## 🎨 Identidad Visual (Colores Brand)
 
-Extraídos directamente del logotipo de CG Psicología:
+Extraídos directamente del logotipo de cgapsicologia:
 
 ```javascript
 colors: {
@@ -396,7 +396,7 @@ npm run build
 
 ## 📄 Licencia
 
-Este proyecto es propiedad de CG Psicología. Uso exclusivamente autorizado para el sitio web de la psicóloga.
+Este proyecto es propiedad de cgapsicologia. Uso exclusivamente autorizado para el sitio web de la psicóloga.
 
 ---
 
