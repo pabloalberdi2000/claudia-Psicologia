@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
@@ -28,7 +29,14 @@ const Navbar = () => {
       <nav className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
         {/* Logo/Brand */}
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <span className="material-symbols-outlined text-primary text-headline-sm">psychology</span>
+          <Image
+            src="/cgapsicologia.png"
+            alt="cgapsicologia - Psicóloga"
+            width={40}
+            height={40}
+            className="h-10 w-auto"
+            priority
+          />
           <span className="font-headline-sm text-headline-sm text-primary">cgapsicologia</span>
         </Link>
 

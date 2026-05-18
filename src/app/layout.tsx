@@ -10,7 +10,10 @@ export const metadata: Metadata = {
   keywords: 'psicología, terapia online, psicóloga, asesoramiento familiar, terapia infantil',
   authors: [{ name: 'cgapsicologia' }],
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/cgapsicologia.png', sizes: '192x192', type: 'image/png' },
+    ],
     apple: '/cgapsicologia.png',
   },
   openGraph: {
