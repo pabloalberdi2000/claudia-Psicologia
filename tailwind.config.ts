@@ -61,6 +61,7 @@ const config: Config = {
         'body-lg': ['Manrope', 'sans-serif'],
         'display-lg-mobile': ['Newsreader', 'serif'],
         'display-lg': ['Newsreader', 'serif'],
+        'cursive': ['Allura', 'cursive'],
         sans: ['Manrope', 'sans-serif'],
       },
       fontSize: {

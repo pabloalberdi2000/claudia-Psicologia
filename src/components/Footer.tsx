@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="bg-surface-container-lowest border-t border-outline-variant/20">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-stack-md py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <div className="space-y-4">
-          <span className="font-headline-sm text-headline-sm text-primary">cgapsicologia</span>
+          <span className="font-headline-sm text-headline-sm text-primary">Claudia González Álvarez</span>
           <p className="font-body-md text-on-surface-variant pr-8">Acompañando procesos de bienestar desde la profesionalidad, la cercanía y la flexibilidad de la terapia online.</p>
         </div>
         <div className="flex flex-col gap-3">
@@ -32,16 +32,16 @@ const Footer = () => {
           <h4 className="font-label-md text-primary font-bold mb-2">Información de contacto</h4>
           <div className="flex items-center gap-3 text-on-surface-variant">
             <span className="material-symbols-outlined text-secondary">mail</span>
-            <span>hola@cgapsicologia.com</span>
+            <span>info@cgapsicologia.com</span>
           </div>
           <div className="flex items-center gap-3 text-on-surface-variant">
             <span className="material-symbols-outlined text-secondary">call</span>
-            <span>+34 600 000 000</span>
+            <span>+34 682 638 679</span>
           </div>
         </div>
       </div>
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 border-t border-outline-variant/10 text-center">
-        <p className="text-label-sm text-outline">© {currentYear} cgapsicologia. Todos los derechos reservados.</p>
+        <p className="text-label-sm text-outline">© {currentYear} Claudia González Álvarez Psicóloga. Todos los derechos reservados.</p>
       </div>
     </footer>
   )

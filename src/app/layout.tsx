@@ -5,10 +5,10 @@ import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 export const metadata: Metadata = {
-  title: 'cgapsicologia | Psicóloga General Sanitaria',
+  title: 'Claudia González Álvarez Psicóloga | Terapia Online',
   description: 'Psicóloga General Sanitaria especializada en terapia online para adultos, familias e infancia-adolescencia. Primera sesión gratuita de 30 minutos.',
   keywords: 'psicología, terapia online, psicóloga, asesoramiento familiar, terapia infantil',
-  authors: [{ name: 'cgapsicologia' }],
+  authors: [{ name: 'Claudia González Álvarez' }],
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     apple: '/cgapsicologia.png',
   },
   openGraph: {
-    title: 'cgapsicologia | Psicóloga General Sanitaria',
+    title: 'Claudia González Álvarez Psicóloga | Terapia Online',
     description: 'Terapia online especializada en adultos, familias e infancia-adolescencia',
     type: 'website',
     images: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: '/cgapsicologia.png',
         width: 1040,
         height: 781,
-        alt: 'cgapsicologia Logo',
+        alt: 'Claudia González Álvarez Psicóloga',
       },
     ],
   },

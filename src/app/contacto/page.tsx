@@ -62,7 +62,7 @@ export default function Contacto() {
               La forma más rápida de contactarme. Respondo generalmente en menos de 24 horas.
             </p>
             <a
-              href="https://wa.me/34682638679?text=Hola%20CGapsicologia,%20me%20gustaría%20agendar%20una%20sesión%20gratuita"
+              href="https://wa.me/34682638679?text=Hola%20Claudia,%20me%20gustaría%20agendar%20una%20sesión%20gratuita"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 bg-[#25D366] text-white rounded-full font-label-md hover:scale-105 transition-transform"
@@ -94,7 +94,7 @@ export default function Contacto() {
               Para consultas formales o documentación. Respondo en 24-48h.
             </p>
             <a
-              href="mailto:contacto@cgapsicologia.es"
+              href="mailto:info@cgapsicologia.com"
               className="inline-block px-6 py-3 bg-secondary text-on-secondary rounded-full font-label-md hover:scale-105 transition-transform"
             >
               Enviar email
@@ -162,7 +162,7 @@ export default function Contacto() {
                     value={formData.telefono}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-outline-variant rounded-lg focus:outline-none focus:border-secondary bg-surface text-on-surface"
-                    placeholder="+34 666 666 666"
+                    placeholder="+34 682 638 679"
                   />
                 </div>
 

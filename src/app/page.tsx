@@ -4,44 +4,66 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg flex flex-col md:flex-row items-center gap-gutter">
-        <div className="w-full md:w-1/2 space-y-stack-sm text-left">
-          <h1 className="font-display-lg text-display-lg text-primary leading-tight">
-            Psicóloga General Sanitaria especializada en terapia online para adultos, familias e infancia-adolescencia.
-          </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
-            Un espacio seguro y profesional desde la comodidad de tu hogar, donde la cercanía no entiende de distancias.
-          </p>
-          <div className="flex flex-wrap gap-4 pt-4">
-            <Link
-              href="/contacto"
-              className="btn-primary px-8 py-4 rounded-full font-label-md flex items-center gap-2 hover:scale-[0.98]"
-            >
-              Reservar primera sesión gratuita
-            </Link>
-            <a
-              href="https://wa.me/34682638679"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary px-8 py-4 rounded-full font-label-md flex items-center gap-2 hover:bg-secondary/5 hover:scale-[0.98]"
-            >
-              <span className="material-symbols-outlined">chat</span>
-              WhatsApp
-            </a>
-          </div>
-        </div>
-        <div className="w-full md:w-1/2">
-          <div className="relative rounded-[2rem] overflow-hidden aspect-[4/5] bg-surface-container-high">
-            <Image
-              src="/home.png"
-              alt="Psicóloga profesional en consultorio"
-              width={400}
-              height={500}
-              className="w-full h-full object-cover grayscale-[20%]"
-              priority
-            />
-            <div className="absolute inset-0 bg-primary/5"></div>
+      {/* Hero Section - Portada */}
+      <section className="relative min-h-screen bg-gradient-to-br from-surface via-surface-container-low to-surface-container-high flex items-center pt-12 pb-stack-lg">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-lg items-center">
+
+            {/* Text and CTA - Left Side */}
+            <div className="space-y-stack-md">
+              <div className="space-y-4">
+                <p className="text-secondary font-label-md uppercase tracking-widest">Bienvenido a tu espacio seguro</p>
+                <h1 className="font-display-lg text-display-lg text-primary leading-tight">
+                  Psicóloga General Sanitaria especializada en terapia online para adultos, familias e infancia-adolescencia.
+                </h1>
+                <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-lg">
+                  Un acompañamiento profesional desde la comodidad de tu hogar, donde la cercanía no entiende de distancias.
+                </p>
+              </div>
+
+              {/* Highlights */}
+              <div className="space-y-3 py-6 border-t border-b border-outline-variant/20">
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                  <span className="text-on-surface-variant">Primera sesión completamente gratuita</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                  <span className="text-on-surface-variant">Confidencialidad garantizada</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                  <span className="text-on-surface-variant">Horarios flexibles adaptados a ti</span>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex justify-center pt-4">
+                <Link
+                  href="/contacto"
+                  className="btn-primary px-8 py-4 rounded-full font-label-md flex items-center justify-center hover:scale-[0.98] transition-all"
+                >
+                  <span>Reservar sesión gratuita</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Image - Right Side */}
+            <div className="relative">
+              <div className="relative rounded-[2rem] overflow-hidden aspect-[3/4] bg-surface-container-high shadow-2xl">
+                <Image
+                  src="/home1.png"
+                  alt="Claudia González Álvarez - Psicóloga profesional"
+                  width={500}
+                  height={600}
+                  className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-500"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent"></div>
+              </div>
+              {/* Decorative element */}
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-secondary/10 rounded-full blur-2xl"></div>
+            </div>
           </div>
         </div>
       </section>

@@ -28,16 +28,19 @@ const Navbar = () => {
     <header className="bg-surface border-b border-outline-variant/30 sticky top-0 z-50">
       <nav className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
         {/* Logo/Brand */}
-        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <Image
-            src="/cgapsicologia.png"
-            alt="cgapsicologia - Psicóloga"
+            src="/cgapsicologia.jpeg"
+            alt="Claudia González Álvarez - Psicóloga"
             width={40}
             height={40}
             className="h-10 w-auto"
             priority
           />
-          <span className="font-headline-sm text-headline-sm text-primary">cgapsicologia</span>
+          <div className="flex flex-col gap-0.5">
+            <span className="font-cursive text-primary text-xl leading-tight font-light">Claudia González Álvarez</span>
+            <span className="text-secondary text-xs font-bold tracking-widest uppercase">Psicóloga</span>
+          </div>
         </Link>
 
         {/* Desktop Menu */}
