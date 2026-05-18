@@ -5,8 +5,8 @@ import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 export const metadata: Metadata = {
-  title: 'cgapsicologia | Terapia Online Profesional',
-  description: 'Psicóloga General Sanitaria especializada en terapia online para adultos, familias e infancia-adolescencia. Primera sesión gratuita.',
+  title: 'cgapsicologia | Psicóloga General Sanitaria',
+  description: 'Psicóloga General Sanitaria especializada en terapia online para adultos, familias e infancia-adolescencia. Primera sesión gratuita de 30 minutos.',
   keywords: 'psicología, terapia online, psicóloga, asesoramiento familiar, terapia infantil',
   authors: [{ name: 'cgapsicologia' }],
   icons: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     apple: '/cgapsicologia.png',
   },
   openGraph: {
-    title: 'cgapsicologia | Terapia Online Profesional',
+    title: 'cgapsicologia | Psicóloga General Sanitaria',
     description: 'Terapia online especializada en adultos, familias e infancia-adolescencia',
     type: 'website',
     images: [
@@ -34,8 +34,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
-      <body className="bg-brand-light text-brand-dark">
+    <html lang="es" className="light">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
+      <body className="bg-surface text-on-surface font-body-md antialiased overflow-x-hidden">
         <Navbar />
         <main className="min-h-screen">
           {children}

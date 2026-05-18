@@ -1,283 +1,146 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function SobreMi() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-brand-light py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-dark mb-6">
+      <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-sm">
+        <div className="space-y-stack-sm text-center">
+          <h1 className="font-display-lg text-display-lg text-primary leading-tight">
             Sobre mí
           </h1>
-          <p className="text-xl text-brand-dark text-opacity-70">
-            Mi formación, experiencia y enfoque terapéutico
+          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+            Conoce mi trayectoria y enfoque terapéutico
+          </p>
+          <div className="w-12 h-1 bg-secondary mx-auto rounded-full mt-4"></div>
+        </div>
+      </section>
+
+      {/* Professional Profile */}
+      <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg flex flex-col md:flex-row gap-stack-lg items-center">
+        <div className="w-full md:w-5/12">
+          <div className="rounded-2xl overflow-hidden border-8 border-white shadow-xl">
+            <Image
+              src="/psicologa.png"
+              alt="Claudia - Psicóloga General Sanitaria"
+              width={400}
+              height={500}
+              className="w-full aspect-square object-cover"
+            />
+          </div>
+        </div>
+        <div className="w-full md:w-7/12 space-y-stack-sm">
+          <h2 className="font-headline-md text-headline-md text-primary">Claudia García Psicóloga</h2>
+          <p className="font-body-lg text-body-lg text-on-surface-variant font-semibold mb-4">
+            Psicóloga General Sanitaria
+          </p>
+          <div className="space-y-4 font-body-md text-on-surface-variant leading-relaxed">
+            <p>
+              Soy una psicóloga apasionada por el bienestar mental y emocional de las personas. Mi vocación surge de la creencia de que el cuidado mental es tan importante como el cuidado físico, y que todos merecemos un espacio seguro para explorar nuestras emociones y crecer como personas.
+            </p>
+            <p>
+              Mi formación académica en Psicología General Sanitaria me ha proporcionado una sólida base en la evaluación, diagnóstico e intervención psicológica. A lo largo de mi carrera, he trabajado con diversos colectivos y problemáticas, lo que me ha permitido desarrollar una visión integradora y flexible de la práctica clínica.
+            </p>
+            <p>
+              Creo firmemente en la importancia de la relación terapéutica como herramienta de cambio. Mi objetivo es crear un espacio de respeto, confianza y confidencialidad donde puedas expresarte sin temor a ser juzgado, sintiéndote verdaderamente escuchado y comprendido.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Specializations */}
+      <section className="bg-surface-container-low py-stack-lg">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+          <div className="mb-stack-md text-center">
+            <h2 className="font-headline-md text-headline-md text-primary mb-4">Áreas de especialización</h2>
+            <div className="w-12 h-1 bg-secondary mx-auto rounded-full"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <div className="tonal-card p-stack-md rounded-xl">
+              <div className="flex items-start gap-4">
+                <span className="material-symbols-outlined text-secondary text-headline-sm flex-shrink-0 mt-2">psychology</span>
+                <div>
+                  <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Terapia individual adultos</h3>
+                  <p className="text-on-surface-variant font-body-md">
+                    Acompañamiento personalizado para gestionar ansiedad, estrés, depresión, fobias, procesos de duelo y otros desafíos emocionales en la etapa adulta.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="tonal-card p-stack-md rounded-xl">
+              <div className="flex items-start gap-4">
+                <span className="material-symbols-outlined text-secondary text-headline-sm flex-shrink-0 mt-2">family_restroom</span>
+                <div>
+                  <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Asesoramiento familiar</h3>
+                  <p className="text-on-surface-variant font-body-md">
+                    Herramientas prácticas para mejorar la comunicación familiar, resolver conflictos y fortalecer los vínculos en el núcleo del hogar.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="tonal-card p-stack-md rounded-xl">
+              <div className="flex items-start gap-4">
+                <span className="material-symbols-outlined text-secondary text-headline-sm flex-shrink-0 mt-2">child_care</span>
+                <div>
+                  <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Terapia infantojuvenil</h3>
+                  <p className="text-on-surface-variant font-body-md">
+                    Intervención especializada para niños y adolescentes, centrada en su bienestar emocional, desarrollo saludable y adaptación a los cambios.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="tonal-card p-stack-md rounded-xl">
+              <div className="flex items-start gap-4">
+                <span className="material-symbols-outlined text-secondary text-headline-sm flex-shrink-0 mt-2">sentiment_satisfied</span>
+                <div>
+                  <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Crecimiento personal</h3>
+                  <p className="text-on-surface-variant font-body-md">
+                    Acompañamiento en procesos de autoconocimiento, desarrollo de habilidades sociales y emocionales, y construcción de una vida más plena.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Approach Section */}
+      <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+        <div className="mb-stack-md text-center">
+          <h2 className="font-headline-md text-headline-md text-primary mb-4">Mi enfoque terapéutico</h2>
+          <div className="w-12 h-1 bg-secondary mx-auto rounded-full"></div>
+        </div>
+        <div className="max-w-4xl mx-auto space-y-6">
+          <p className="font-body-md text-on-surface-variant leading-relaxed">
+            Mi práctica se fundamenta en la integración de diferentes corrientes terapéuticas, priorizando siempre la evidencia científica y la adaptación a las necesidades únicas de cada persona. Combino técnicas de terapia cognitivo-conductual con un enfoque humanista que valora la calidez, la empatía y la autenticidad.
+          </p>
+          <p className="font-body-md text-on-surface-variant leading-relaxed">
+            Entiendo la terapia como un proceso colaborativo donde tú eres el experto en tu propia vida. Mi rol es guiarte, ofrecer nuevas perspectivas y facilitar herramientas prácticas que te permitan tomar decisiones más conscientes y vivir de manera más alineada con tus valores.
+          </p>
+          <p className="font-body-md text-on-surface-variant leading-relaxed">
+            La terapia online no es una versión "inferior" de la terapia presencial. Es una modalidad que, gracias a la tecnología, nos permite trabajar desde el confort y la privacidad de tu espacio, reduciendo barreras de acceso y permitiendo una mayor flexibilidad. La conexión genuina entre terapeuta y cliente trasciende la pantalla.
           </p>
         </div>
       </section>
 
-      {/* Formación */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-brand-dark mb-8">Formación Académica</h2>
-
-          <div className="space-y-8">
-            <div className="pb-8 border-b border-brand-gold border-opacity-20">
-              <h3 className="text-xl font-semibold text-brand-dark mb-2">
-                Grado en Psicología
-              </h3>
-              <p className="text-brand-gold font-semibold mb-3">Universidad Autónoma de Madrid (UAM)</p>
-              <p className="text-brand-dark text-opacity-70">
-                Formación integral en psicología clínica, social, del desarrollo y del aprendizaje.
-              </p>
-            </div>
-
-            <div className="pb-8 border-b border-brand-gold border-opacity-20">
-              <h3 className="text-xl font-semibold text-brand-dark mb-2">
-                Máster en Psicología Clínica
-              </h3>
-              <p className="text-brand-gold font-semibold mb-3">Universidad Autónoma Extensa (UAX)</p>
-              <p className="text-brand-dark text-opacity-70">
-                Especialización en evaluación, diagnóstico y tratamiento de trastornos mentales.
-                Enfoque en terapias de tercera generación y psicoterapia basada en evidencia.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold text-brand-dark mb-2">
-                Colegiación Profesional
-              </h3>
-              <p className="text-brand-gold font-semibold mb-3">Psicóloga General Sanitaria</p>
-              <p className="text-brand-dark text-opacity-70">
-                Colegiada y habilitada para el ejercicio de la psicología clínica y salud mental.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experiencia Profesional */}
-      <section className="py-20 px-6 bg-brand-light">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-brand-dark mb-8">Experiencia Profesional</h2>
-
-          <div className="space-y-8">
-            <div className="p-6 bg-white rounded-lg border-l-4 border-brand-gold">
-              <h3 className="text-xl font-semibold text-brand-dark mb-2">
-                Clínica Álava Reyes
-              </h3>
-              <p className="text-sm text-brand-gold font-semibold mb-3">Especializada en infancia y adolescencia</p>
-              <p className="text-brand-dark text-opacity-70">
-                Más de 5 años trabajando con niños y adolescentes en áreas como TDAH, ansiedad,
-                autoestima y dificultades de aprendizaje. Experiencia en evaluación psicoeducativa
-                y orientación a familias.
-              </p>
-            </div>
-
-            <div className="p-6 bg-white rounded-lg border-l-4 border-brand-gold">
-              <h3 className="text-xl font-semibold text-brand-dark mb-2">
-                Clínica Elesebe
-              </h3>
-              <p className="text-sm text-brand-gold font-semibold mb-3">Centro multidisciplinario de salud mental</p>
-              <p className="text-brand-dark text-opacity-70">
-                Intervención integral con adultos y familias. Terapia individual, terapia de pareja
-                y asesoramiento familiar. Manejo de trastornos de ansiedad, depresión y problemas
-                relacionales.
-              </p>
-            </div>
-
-            <div className="p-6 bg-white rounded-lg border-l-4 border-brand-gold">
-              <h3 className="text-xl font-semibold text-brand-dark mb-2">
-                Terapia Online
-              </h3>
-              <p className="text-sm text-brand-gold font-semibold mb-3">Práctica privada especializada</p>
-              <p className="text-brand-dark text-opacity-70">
-                Desde hace 3 años ofrezco sesiones de terapia online, aprovechando las ventajas
-                de la flexibilidad y accesibilidad. Misma calidad profesional que la terapia presencial,
-                adaptada a las necesidades modernas.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Áreas de Especialización */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-brand-dark mb-8">Áreas de Especialización</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold text-brand-dark mb-4 text-brand-gold border-b pb-2">
-                Adultos
-              </h3>
-              <ul className="space-y-3 text-brand-dark text-opacity-70">
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Ansiedad y ataques de pánico</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Depresión y baja autoestima</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Dependencia emocional</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Problemas de relaciones</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Estrés y manejo emocional</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Crecimiento personal y autoconocimiento</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold text-brand-dark mb-4 text-brand-gold border-b pb-2">
-                Infancia y Adolescencia
-              </h3>
-              <ul className="space-y-3 text-brand-dark text-opacity-70">
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Ansiedad y miedos infantiles</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Problemas de conducta</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Autoestima en adolescentes</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Dificultades escolares y académicas</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Duelo y pérdida</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Transiciones de vida (cambios escolares, etc.)</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold text-brand-dark mb-4 text-brand-gold border-b pb-2">
-                Asesoramiento Familiar
-              </h3>
-              <ul className="space-y-3 text-brand-dark text-opacity-70">
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Conflictos familiares</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Comunicación familiar</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Dinámicas relacionales disfuncionales</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Orientación parental</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Separaciones y divorcios</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Duelo familiar</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold text-brand-dark mb-4 text-brand-gold border-b pb-2">
-                Enfoque Terapéutico
-              </h3>
-              <ul className="space-y-3 text-brand-dark text-opacity-70">
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Basado en Teoría del Apego</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Enfoque Integrativo</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Técnicas de Tercera Generación</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Mindfulness y regulación emocional</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Sin juicio y con total confidencialidad</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-gold">▸</span>
-                  <span>Respeto por el ritmo personal</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mi Enfoque Terapéutico */}
-      <section className="py-20 px-6 bg-brand-light">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-brand-dark mb-8">Mi Enfoque Terapéutico</h2>
-
-          <div className="bg-white p-8 rounded-lg">
-            <p className="text-brand-dark text-opacity-80 mb-6 leading-relaxed">
-              Creo profundamente que cada persona tiene dentro de sí los recursos necesarios para crecer y cambiar.
-              Mi rol como psicóloga es acompañarte en el descubrimiento de esos recursos y ayudarte a utilizarlos
-              de forma consciente.
-            </p>
-
-            <p className="text-brand-dark text-opacity-80 mb-6 leading-relaxed">
-              Mi enfoque se fundamenta en la <strong>Teoría del Apego</strong>, reconociendo que nuestras
-              experiencias relacionales tempranas configuran cómo nos vinculamos con otros. Desde ahí, trabajamos
-              para desarrollar relaciones más seguras, auténticas y libres de juicio.
-            </p>
-
-            <p className="text-brand-dark text-opacity-80 leading-relaxed">
-              Integro técnicas de psicoterapia de tercera generación (mindfulness, ACT, compasión) con un
-              profundo respeto por tu ritmo y necesidades. <strong>Sin presiones, sin moralismos.</strong> Solo
-              un espacio seguro donde puedas ser tú mismo mientras crecemos juntos.
+      {/* Call to Action */}
+      <section className="bg-primary text-on-primary py-stack-md">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-stack-md">
+          <div>
+            <h2 className="font-headline-sm text-headline-sm text-on-primary mb-2">¿Listo para empezar?</h2>
+            <p className="font-body-md text-on-primary-container">
+              La primera sesión es completamente gratuita. Sin compromisos, solo un espacio seguro.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 px-6 bg-brand-dark">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-brand-light mb-4">
-            ¿Quieres conocerme mejor?
-          </h2>
-          <p className="text-gray-200 mb-6">
-            Agenda tu primera sesión gratuita y conoce mi forma de trabajar.
-          </p>
           <Link
             href="/contacto"
-            className="inline-block px-8 py-3 bg-brand-gold text-brand-dark rounded hover:bg-white font-semibold transition-all duration-300"
+            className="btn-primary px-8 py-4 rounded-full font-label-md hover:scale-[0.98] whitespace-nowrap bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-fixed-dim"
           >
-            Agendar sesión gratuita
+            Reservar sesión
           </Link>
         </div>
       </section>

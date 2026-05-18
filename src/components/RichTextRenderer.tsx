@@ -13,10 +13,10 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = ({ document }) => {
   const options = {
     renderMark: {
       [MARKS.BOLD]: (text: ReactNode) => (
-        <strong className="font-semibold text-brand-dark">{text}</strong>
+        <strong className="font-semibold text-primary">{text}</strong>
       ),
       [MARKS.ITALIC]: (text: ReactNode) => (
-        <em className="italic text-brand-dark">{text}</em>
+        <em className="italic text-primary">{text}</em>
       ),
       [MARKS.UNDERLINE]: (text: ReactNode) => (
         <u className="underline">{text}</u>
@@ -29,20 +29,20 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = ({ document }) => {
     },
     renderNode: {
       [BLOCKS.PARAGRAPH]: (_node: any, children: ReactNode) => (
-        <p className="mb-4 text-base leading-7 text-brand-dark">{children}</p>
+        <p className="mb-4 text-base leading-7 text-primary">{children}</p>
       ),
       [BLOCKS.HEADING_2]: (_node: any, children: ReactNode) => (
-        <h2 className="text-2xl font-semibold text-brand-dark mt-8 mb-4 pb-2 border-b-2 border-brand-gold">
+        <h2 className="text-2xl font-semibold text-primary mt-8 mb-4 pb-2 border-b-2 border-secondary">
           {children}
         </h2>
       ),
       [BLOCKS.HEADING_3]: (_node: any, children: ReactNode) => (
-        <h3 className="text-xl font-semibold text-brand-dark mt-6 mb-3">
+        <h3 className="text-xl font-semibold text-primary mt-6 mb-3">
           {children}
         </h3>
       ),
       [BLOCKS.HEADING_4]: (_node: any, children: ReactNode) => (
-        <h4 className="text-lg font-semibold text-brand-dark mt-5 mb-2">
+        <h4 className="text-lg font-semibold text-primary mt-5 mb-2">
           {children}
         </h4>
       ),
@@ -53,15 +53,12 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = ({ document }) => {
         <ol className="list-decimal list-inside mb-4 ml-2 space-y-2">{children}</ol>
       ),
       [BLOCKS.LIST_ITEM]: (_node: any, children: ReactNode) => (
-        <li className="text-brand-dark">{children}</li>
+        <li className="text-primary">{children}</li>
       ),
-      [BLOCKS.BLOCKQUOTE]: (_node: any, children: ReactNode) => (
-        <blockquote className="border-l-4 border-brand-gold pl-4 italic text-brand-dark my-4 bg-gray-50 py-3">
+      [BLOCKS.QUOTE]: (_node: any, children: ReactNode) => (
+        <blockquote className="border-l-4 border-secondary pl-4 italic text-primary my-4 bg-surface-container py-3">
           {children}
         </blockquote>
-      ),
-      [BLOCKS.HR]: () => (
-        <hr className="my-6 border-t border-brand-gold opacity-50" />
       ),
     },
   }
