@@ -22,7 +22,7 @@ export default function SobreMi() {
         <div className="w-full md:w-5/12">
           <div className="rounded-2xl overflow-hidden border-8 border-white shadow-xl">
             <Image
-              src="/psicologa.png"
+              src="/claudia.jpeg"
               alt="Claudia - Psicóloga General Sanitaria"
               width={400}
               height={500}
