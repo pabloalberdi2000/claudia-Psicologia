@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default function MarkdownRenderer({ content }: { content: string }) {
   // Procesa el markdown manualmente para renderizar correctamente
   const lines = content.split('\n')
