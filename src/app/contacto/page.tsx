@@ -54,50 +54,50 @@ export default function Contacto() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
           {/* WhatsApp */}
-          <div className="tonal-card p-stack-md rounded-xl text-center border-l-4 border-[#25D366]">
+          <div className="tonal-card p-stack-md rounded-xl text-center border-l-4 border-[#25D366] flex flex-col">
             <span className="material-symbols-outlined text-5xl text-[#25D366] flex justify-center mb-4">chat</span>
             <h3 className="font-headline-sm text-headline-sm text-primary mb-2">WhatsApp</h3>
-            <p className="text-on-surface-variant font-body-md mb-4">
+            <p className="text-on-surface-variant font-body-md mb-4 flex-grow">
               La forma más rápida de contactarme. Respondo generalmente en menos de 24 horas.
             </p>
             <a
               href="https://wa.me/34682638679?text=Hola%20Claudia,%20me%20gustaría%20agendar%20una%20sesión%20gratuita"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-[#25D366] text-white rounded-full font-label-md hover:scale-105 transition-transform"
+              className="block px-6 py-3 bg-[#25D366] text-white rounded-full font-label-md hover:scale-105 transition-transform w-full text-center"
             >
               Enviar WhatsApp
             </a>
           </div>
 
           {/* Phone */}
-          <div className="tonal-card p-stack-md rounded-xl text-center border-l-4 border-secondary">
+          <div className="tonal-card p-stack-md rounded-xl text-center border-l-4 border-secondary flex flex-col">
             <span className="material-symbols-outlined text-5xl text-secondary flex justify-center mb-4">call</span>
             <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Teléfono</h3>
-            <p className="text-on-surface-variant font-body-md mb-4">
+            <p className="text-on-surface-variant font-body-md mb-4 flex-grow">
               Llamada directa. Disponible de lunes a viernes, 10h-20h.
             </p>
             <a
               href="tel:+34682638679"
-              className="inline-block px-6 py-3 bg-secondary text-on-secondary rounded-full font-label-md hover:scale-105 transition-transform"
+              className="block px-6 py-3 bg-secondary text-on-secondary rounded-full font-label-md hover:scale-105 transition-transform w-full text-center"
             >
               Llamar ahora
             </a>
           </div>
 
           {/* Email */}
-          <div className="tonal-card p-stack-md rounded-xl text-center border-l-4 border-secondary">
+          <div className="tonal-card p-stack-md rounded-xl text-center border-l-4 border-secondary flex flex-col">
             <span className="material-symbols-outlined text-5xl text-secondary flex justify-center mb-4">mail</span>
             <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Email</h3>
-            <p className="text-on-surface-variant font-body-md mb-4">
+            <p className="text-on-surface-variant font-body-md mb-4 flex-grow">
               Para cualquier consulta o información adicional. Respondo en 24-48h.
             </p>
             <a
               href="mailto:info@cgapsicologia.com"
-              className="inline-block px-6 py-3 bg-secondary text-on-secondary rounded-full font-label-md hover:scale-105 transition-transform"
+              className="block px-6 py-3 bg-secondary text-on-secondary rounded-full font-label-md hover:scale-105 transition-transform w-full text-center"
             >
               Enviar email
-              </a>
+            </a>
           </div>
         </div>
       </section>
