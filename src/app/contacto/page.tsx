@@ -2,6 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Contacto | Psicóloga Online - Claudia González',
+  description: 'Contacta con Claudia González para agendar tu sesión gratuita. WhatsApp, teléfono, email o formulario. Disponible de lunes a sábados.',
+  keywords: 'contacto psicóloga, agendar sesión, WhatsApp terapia, consulta psicológica, contactar psicóloga',
+}
 
 export default function Contacto() {
   const [formData, setFormData] = useState({

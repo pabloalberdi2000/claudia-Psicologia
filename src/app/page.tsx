@@ -1,5 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Psicóloga Online | Terapia para Adultos, Adolescentes y Familias',
+  description: 'Claudia González, psicóloga general sanitaria, ofrece terapia online especializada para adultos, adolescentes y familias. Enfoque integrativo con técnicas basadas en evidencia científica. Primera sesión gratuita.',
+  keywords: 'terapia online, psicóloga, psicología online, terapia adultos, terapia adolescentes, asesoramiento familiar, ansiedad, estrés, sesión gratuita',
+}
 
 export default function Home() {
   return (

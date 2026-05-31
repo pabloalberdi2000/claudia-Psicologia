@@ -2,6 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terapia Online | Cómo funciona, requisitos y FAQs',
+  description: 'Descubre cómo funciona la terapia online con Google Meet. Requisitos técnicos, ventajas, proceso en 4 pasos y respuestas a preguntas frecuentes sobre sesiones virtuales de psicología.',
+  keywords: 'terapia online, videoconferencia, Google Meet, psicología virtual, sesiones online, cómo funciona terapia online, requisitos técnicos',
+}
 
 export default function TerapiaOnline() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)

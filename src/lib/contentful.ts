@@ -1,4 +1,5 @@
 import { createClient } from 'contentful'
+import { defaultBlogPosts } from '@/data/defaultBlogPosts'
 
 const spaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || ''
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || ''
@@ -20,13 +21,26 @@ export async function getBlogPosts(limit: number = 10): Promise<any[]> {
     const client = getClient()
     const entries = await client.getEntries({
       content_type: 'blogPost',
-      limit,
+      limit: 100,
       order: '-fields.publishedAt',
     })
-    return entries.items
+
+    // Combina artículos de Contentful con los por defecto
+    const allPosts = [...entries.items, ...defaultBlogPosts]
+
+    // Ordena por fecha (más reciente primero)
+    const sortedPosts = allPosts.sort((a, b) => {
+      const dateA = new Date(a.fields.publishedAt).getTime()
+      const dateB = new Date(b.fields.publishedAt).getTime()
+      return dateB - dateA
+    })
+
+    // Retorna solo la cantidad límite
+    return sortedPosts.slice(0, limit)
   } catch (error) {
     console.error('Error fetching blog posts:', error)
-    return []
+    // Si hay error con Contentful, devuelve los artículos por defecto
+    return defaultBlogPosts.slice(0, limit)
   }
 }
 
@@ -38,10 +52,19 @@ export async function getBlogPostBySlug(slug: string): Promise<any | null> {
       'fields.slug': slug,
       limit: 1,
     })
-    return entries.items[0] || null
+
+    if (entries.items.length > 0) {
+      return entries.items[0]
+    }
+
+    // Si no encuentra en Contentful, busca en los artículos por defecto
+    const defaultPost = defaultBlogPosts.find((post) => post.fields.slug === slug)
+    return defaultPost || null
   } catch (error) {
     console.error(`Error fetching blog post with slug ${slug}:`, error)
-    return null
+    // Si hay error, busca en los artículos por defecto
+    const defaultPost = defaultBlogPosts.find((post) => post.fields.slug === slug)
+    return defaultPost || null
   }
 }
 

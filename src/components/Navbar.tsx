@@ -14,6 +14,7 @@ const Navbar = () => {
     { href: '/sobre-mi', label: 'Sobre mí' },
     { href: '/servicios', label: 'Servicios' },
     { href: '/terapia-online', label: 'Terapia Online' },
+    { href: '/blog', label: 'Blog' },
     { href: '/contacto', label: 'Contacto' },
   ]
 

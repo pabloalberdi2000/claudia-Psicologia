@@ -1,3 +1,11 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Servicios de Psicología Online | Terapia Individual, Adolescentes y Familias',
+  description: 'Servicios de terapia online especializados: terapia para adultos, asesoramiento familiar y terapia para adolescentes. Enfoque integrativo con técnicas cognitivo-conductuales, mindfulness y ACT.',
+  keywords: 'servicios psicológicos, terapia adultos, asesoramiento familiar, terapia adolescentes, terapia cognitivo-conductual, mindfulness, ACT, terapia online',
+}
+
 export default function Servicios() {
   const servicios = [
     {

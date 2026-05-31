@@ -1,5 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Sobre mí | Claudia González - Psicóloga General Sanitaria',
+  description: 'Conoce a Claudia González, psicóloga general sanitaria especializada en terapia online. Formación, enfoque terapéutico integrativo y experiencia en terapia para adultos, adolescentes y familias.',
+  keywords: 'psicóloga, Claudia González, formación, enfoque terapéutico, psicología general sanitaria, terapia integrativa',
+}
 
 export default function SobreMi() {
   return (
