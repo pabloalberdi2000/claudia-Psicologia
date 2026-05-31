@@ -3,7 +3,7 @@ import React from 'react'
 export default function MarkdownRenderer({ content }: { content: string }) {
   // Procesa el markdown manualmente para renderizar correctamente
   const lines = content.split('\n')
-  const elements: JSX.Element[] = []
+  const elements: React.ReactNode[] = []
   let i = 0
   let elementKey = 0
 
@@ -73,9 +73,9 @@ export default function MarkdownRenderer({ content }: { content: string }) {
 }
 
 // Helper function to render inline markdown (bold, italic, etc)
-function renderInlineMarkdown(text: string): (string | JSX.Element)[] | string {
+function renderInlineMarkdown(text: string): (string | React.ReactElement)[] | string {
   const boldRegex = /\*\*(.*?)\*\*/g
-  const parts: (string | JSX.Element)[] = []
+  const parts: (string | React.ReactElement)[] = []
   let lastIndex = 0
   let match: RegExpExecArray | null
 
