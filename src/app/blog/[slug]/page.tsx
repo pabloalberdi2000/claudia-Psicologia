@@ -57,7 +57,6 @@ export default async function BlogPost({
   }
 
   const allPosts = await getBlogPosts(100)
-  const postIndex = allPosts.findIndex((p) => p.fields.slug === params.slug)
   const relatedPosts = allPosts.slice(0, 3).filter((p) => p.fields.slug !== params.slug)
 
   return (
