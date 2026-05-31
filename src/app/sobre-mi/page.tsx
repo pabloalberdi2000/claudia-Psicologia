@@ -116,10 +116,10 @@ export default function SobreMi() {
         </div>
         <div className="max-w-4xl mx-auto space-y-6">
           <p className="font-body-md text-on-surface-variant leading-relaxed">
-            Mi práctica se fundamenta en la integración de diferentes corrientes terapéuticas, priorizando siempre la evidencia científica y la adaptación a las necesidades únicas de cada persona. Combino técnicas de terapia cognitivo-conductual con un enfoque humanista que valora la calidez, la empatía y la autenticidad.
+            Mi práctica se basa en un <strong>enfoque integrador basado en la evidencia científica</strong>, adaptando cada proceso terapéutico a las necesidades, objetivos y momento vital de cada persona.
           </p>
           <p className="font-body-md text-on-surface-variant leading-relaxed">
-            Entiendo la terapia como un proceso colaborativo donde tú eres el experto en tu propia vida. Mi rol es guiarte, ofrecer nuevas perspectivas y facilitar herramientas prácticas que te permitan tomar decisiones más conscientes y vivir de manera más alineada con tus valores.
+            Combino herramientas de <strong>terapia cognitivo-conductual, terapias contextuales y de tercera generación</strong>, junto con una mirada sistémica y centrada en la persona, manteniendo siempre una <strong>relación terapéutica basada en la empatía, la autenticidad y el respeto</strong>.
           </p>
           <p className="font-body-md text-on-surface-variant leading-relaxed">
             La terapia online no es una versión "inferior" de la terapia presencial. Es una modalidad que, gracias a la tecnología, nos permite trabajar desde el confort y la privacidad de tu espacio, reduciendo barreras de acceso y permitiendo una mayor flexibilidad. La conexión genuina entre terapeuta y cliente trasciende la pantalla.

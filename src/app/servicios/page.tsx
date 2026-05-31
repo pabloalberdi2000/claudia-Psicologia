@@ -35,20 +35,20 @@ export default function Servicios() {
       ],
     },
     {
-      icon: 'child_care',
-      titulo: 'Terapia infantojuvenil',
-      descripcion: 'Apoyo especializado para niños y adolescentes',
+      icon: 'school',
+      titulo: 'Terapia con adolescentes',
+      descripcion: 'Intervención especializada para jóvenes en su etapa formativa',
       temas: [
-        'Ansiedad y miedos infantiles',
-        'Problemas de conducta',
-        'Bajo rendimiento académico',
-        'Inseguridad y baja autoestima',
-        'Dificultades en relaciones escolares (bullying)',
-        'Transiciones de vida (cambios escolares)',
-        'Duelo infantil y pérdida',
-        'Hiperactividad y falta de concentración',
-        'Mutismo selectivo',
-        'Problemas de sueño y regulación emocional',
+        'Ansiedad y bienestar emocional',
+        'Autoestima e identidad',
+        'Gestión emocional',
+        'Estrés académico',
+        'Estado de ánimo',
+        'Relaciones sociales',
+        'Conflictos familiares',
+        'Adaptación al cambio',
+        'Pantallas y hábitos',
+        'Crecimiento personal',
       ],
     },
   ]
@@ -127,8 +127,8 @@ export default function Servicios() {
               },
               {
                 numero: '4',
-                titulo: 'Evaluación y cierre',
-                desc: 'Revisamos logros y preparamos herramientas para la autonomía',
+                titulo: 'Prevención de recaídas y seguimiento',
+                desc: 'Consolidamos herramientas y diseñamos un plan de seguimiento flexible a largo plazo',
               },
             ].map((paso) => (
               <div key={paso.numero} className="tonal-card p-stack-md rounded-xl text-center">
@@ -156,34 +156,30 @@ export default function Servicios() {
 
         <div className="space-y-4 max-w-4xl mx-auto">
           <div className="tonal-card p-stack-md rounded-xl border-l-4 border-secondary">
-            <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Teoría del Apego</h3>
+            <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Enfoque Integrativo y Personalizado</h3>
             <p className="text-on-surface-variant font-body-md">
-              Entendemos cómo tus experiencias relacionales tempranas influyen en tus patrones actuales
-              y trabajamos para desarrollar relaciones más seguras y auténticas.
+              No creo en soluciones universales. Combino herramientas científicas de distintas corrientes (cognitivo-conductual, humanista y psicodinámica) para adaptar de forma exclusiva cada sesión a tus necesidades, objetivos y ritmo.
             </p>
           </div>
 
           <div className="tonal-card p-stack-md rounded-xl border-l-4 border-secondary">
-            <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Terapia de tercera generación</h3>
+            <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Teoría del Apego y Vínculos</h3>
             <p className="text-on-surface-variant font-body-md">
-              Integramos técnicas de Terapia de Aceptación y Compromiso (ACT), Mindfulness y técnicas
-              basadas en compasión para una transformación más profunda y duradera.
+              Analizamos cómo tus primeras experiencias influyen en la forma en que te percibes y te relacionas hoy. Entender tu historia te permitirá sanar patrones y construir vínculos actuales más seguros y sanos.
             </p>
           </div>
 
           <div className="tonal-card p-stack-md rounded-xl border-l-4 border-secondary">
-            <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Enfoque integrativo</h3>
+            <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Terapias de Tercera Generación y ACT</h3>
             <p className="text-on-surface-variant font-body-md">
-              Combinamos elementos de diferentes corrientes psicológicas (cognitivo-conductual, humanista,
-              psicodinámica) adaptados a las necesidades específicas de cada persona.
+              Integro Mindfulness, autocompasión y ACT para enseñarte a gestionar tus pensamientos y emociones sin luchar contra ellos, guiándote hacia decisiones alineadas con tus valores y bienestar.
             </p>
           </div>
 
           <div className="tonal-card p-stack-md rounded-xl border-l-4 border-secondary">
-            <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Sin juicio</h3>
+            <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Acompañamiento Humano y Sin Juicio</h3>
             <p className="text-on-surface-variant font-body-md">
-              Mi rol no es juzgar sino acompañar. Creamos un espacio completamente seguro y confidencial
-              donde puedas ser auténtico.
+              Mi rol no es juzgarte, sino acompañarte desde la empatía y la horizontalidad. Encontrarás un espacio seguro, confidencial y libre donde expresarte tal y como eres, sintiéndote escuchada y validada.
             </p>
           </div>
         </div>
@@ -221,7 +217,7 @@ export default function Servicios() {
               <ul className="space-y-2 text-on-surface-variant font-body-md">
                 <li className="flex gap-3">
                   <span className="material-symbols-outlined text-secondary text-lg">check_circle</span>
-                  <span><strong>Plataforma:</strong> Zoom, Teams o similar</span>
+                  <span><strong>Plataforma:</strong> Google Meet</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="material-symbols-outlined text-secondary text-lg">check_circle</span>
@@ -241,7 +237,7 @@ export default function Servicios() {
       <section className="bg-primary text-on-primary py-stack-md">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-stack-md">
           <div>
-            <h2 className="font-headline-sm text-headline-sm text-on-primary mb-2">¿Alguno de estos servicios te resuena?</h2>
+            <h2 className="font-headline-sm text-headline-sm text-on-primary mb-2">¿Listo para empezar?</h2>
             <p className="font-body-md text-on-primary-container">
               La primera sesión es completamente gratuita. Sin compromisos, conoceremos tus necesidades.
             </p>

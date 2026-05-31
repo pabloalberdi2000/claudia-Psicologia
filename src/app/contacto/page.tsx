@@ -8,7 +8,6 @@ export default function Contacto() {
     nombre: '',
     correo: '',
     telefono: '',
-    motivo: '',
     mensaje: '',
   })
   const [enviado, setEnviado] = useState(false)
@@ -26,7 +25,7 @@ export default function Contacto() {
     console.log('Formulario enviado:', formData)
     setEnviado(true)
     setTimeout(() => {
-      setFormData({ nombre: '', correo: '', telefono: '', motivo: '', mensaje: '' })
+      setFormData({ nombre: '', correo: '', telefono: '', mensaje: '' })
       setEnviado(false)
     }, 3000)
   }
@@ -91,7 +90,7 @@ export default function Contacto() {
             <span className="material-symbols-outlined text-5xl text-secondary flex justify-center mb-4">mail</span>
             <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Email</h3>
             <p className="text-on-surface-variant font-body-md mb-4">
-              Para consultas formales o documentación. Respondo en 24-48h.
+              Para cualquier consulta o información adicional. Respondo en 24-48h.
             </p>
             <a
               href="mailto:info@cgapsicologia.com"
@@ -164,27 +163,6 @@ export default function Contacto() {
                     className="w-full px-4 py-3 border border-outline-variant rounded-lg focus:outline-none focus:border-secondary bg-surface text-on-surface"
                     placeholder="+34 682 638 679"
                   />
-                </div>
-
-                {/* Reason for Consultation */}
-                <div>
-                  <label htmlFor="motivo" className="block text-label-md font-bold text-primary mb-2">
-                    Motivo de consulta *
-                  </label>
-                  <select
-                    id="motivo"
-                    name="motivo"
-                    value={formData.motivo}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-outline-variant rounded-lg focus:outline-none focus:border-secondary bg-surface text-on-surface"
-                  >
-                    <option value="">Selecciona un motivo...</option>
-                    <option value="adultos">Terapia individual adultos</option>
-                    <option value="familiar">Asesoramiento familiar</option>
-                    <option value="infantil">Terapia infantojuvenil</option>
-                    <option value="otro">Otro</option>
-                  </select>
                 </div>
 
                 {/* Message */}

@@ -9,7 +9,7 @@ export default function TerapiaOnline() {
   const faqs = [
     {
       pregunta: '¿Qué necesito para participar en una sesión online?',
-      respuesta: 'Solo necesitas un dispositivo con cámara (computadora, tablet o móvil) y conexión a internet estable. Usamos plataformas seguras como Zoom o Teams.',
+      respuesta: 'Solo necesitas un dispositivo con cámara (computadora, tablet o móvil) y conexión a internet estable. Usamos Google Meet, una plataforma segura y confiable.',
     },
     {
       pregunta: '¿Es igual de efectiva que la terapia presencial?',
@@ -29,7 +29,7 @@ export default function TerapiaOnline() {
     },
     {
       pregunta: '¿Cómo funciona el pago?',
-      respuesta: 'Ofrecemos diferentes métodos: transferencia bancaria, Bizum o tarjeta de crédito. El pago se realiza antes de la primera sesión y luego al inicio de cada mes.',
+      respuesta: 'Ofrecemos diferentes métodos: transferencia bancaria o Bizum. El pago se realiza antes de la primera sesión y en caso de contratar bonos sería al inicio de cada mes.',
     },
     {
       pregunta: '¿Necesito un diagnóstico previo?',
@@ -45,7 +45,7 @@ export default function TerapiaOnline() {
     },
     {
       pregunta: '¿Cuánto tiempo dura típicamente un proceso terapéutico?',
-      respuesta: 'Depende de tus objetivos y de cómo progreséis. Algunos procesos son cortos (3-6 meses), otros más largos. Lo evaluaremos juntas regularmente.',
+      respuesta: ' Depende de lo que necesites abordar y de tu propio progreso. Puede variar desde procesos breves de 3 a 6 meses hasta acompañamientos a más largo plazo. Evaluaremos los avances de manera continua y conjunta, priorizando siempre tu autonomía y bienestar.',
     },
   ]
 
@@ -75,17 +75,17 @@ export default function TerapiaOnline() {
             {
               paso: 1,
               titulo: 'Primer contacto',
-              descripcion: 'Nos contactas por WhatsApp, teléfono o formulario. Conversamos brevemente sobre tus necesidades y agendamos la sesión gratuita.',
+              descripcion: 'Nos cuentas qué te preocupa y agendamos tu sesión gratuita para valorar cómo puedo ayudarte. Respondo en menos de 24 horas.',
               detalles: [
                 'Sin compromisos previos',
                 'Conocemos tus expectativas',
-                'Respondo generalmente en 24 horas',
+                'Respuesta rápida garantizada',
               ]
             },
             {
               paso: 2,
               titulo: 'Primera sesión gratuita (30 min)',
-              descripcion: 'Sesión de evaluación donde nos conocemos. Exploras cómo trabajo, hago preguntas sobre tu situación y definimos objetivos.',
+              descripcion: 'Un espacio seguro para conocernos. Me cuentas tu situación actual, resolvemos tus dudas sobre cómo trabajo y definimos los primeros objetivos, sin presiones.',
               detalles: [
                 'Conversación abierta y sin presión',
                 'Evaluación de necesidades',
@@ -95,7 +95,7 @@ export default function TerapiaOnline() {
             {
               paso: 3,
               titulo: 'Sesiones regulares (50 min)',
-              descripcion: 'Comenzamos el proceso terapéutico. Trabajamos en los objetivos definidos con técnicas adaptadas a ti.',
+              descripcion: 'Iniciamos el proceso terapéutico propiamente dicho. Trabajamos de forma personalizada en tus objetivos, dotándote de herramientas prácticas adaptadas a tu ritmo.',
               detalles: [
                 'Frecuencia flexible (semanal, quincenal, mensual)',
                 'Horarios adaptados a tu disponibilidad',
@@ -104,12 +104,12 @@ export default function TerapiaOnline() {
             },
             {
               paso: 4,
-              titulo: 'Cierre y seguimiento',
-              descripcion: 'Cuando alcanzes tus objetivos o decidas parar, evaluamos el proceso y consolidamos herramientas para la autonomía.',
+              titulo: 'Prevención de recaídas y seguimiento',
+              descripcion: 'Cuando alcances tus objetivos o decidas parar, evaluaremos el proceso y consolidaremos herramientas para tu autonomía.',
               detalles: [
-                'Revisión de logros',
-                'Plan de mantenimiento',
-                'Seguimiento opcional',
+                'Consolidación de herramientas aprendidas',
+                'Plan de prevención de recaídas',
+                'Seguimiento flexible a largo plazo',
               ]
             },
           ].map((paso) => (
@@ -246,23 +246,23 @@ export default function TerapiaOnline() {
               <ul className="space-y-3 text-on-surface-variant font-body-md">
                 <li className="flex gap-3">
                   <span className="material-symbols-outlined text-secondary flex-shrink-0 text-lg">lightbulb</span>
-                  <span>Apaga notificaciones y distracciones</span>
+                  <span>Minimiza las distracciones: apaga las notificaciones y busca un lugar tranquilo.</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="material-symbols-outlined text-secondary flex-shrink-0 text-lg">lightbulb</span>
-                  <span>Vuelve unos 5 minutos antes</span>
+                  <span>Conéctate 5 minutos antes para comprobar audio y vídeo sin prisas.</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="material-symbols-outlined text-secondary flex-shrink-0 text-lg">lightbulb</span>
-                  <span>Luz natural o adecuada para la cámara</span>
+                  <span>Cuida la iluminación, preferiblemente con luz natural o de frente.</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="material-symbols-outlined text-secondary flex-shrink-0 text-lg">lightbulb</span>
-                  <span>Ropa cómoda (es terapia, no una entrevista)</span>
+                  <span>Ponte cómoda con ropa que te haga sentir a gusto.</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="material-symbols-outlined text-secondary flex-shrink-0 text-lg">lightbulb</span>
-                  <span>Ten agua y un cuaderno a mano</span>
+                  <span>Prepara un vaso de agua y un cuaderno por si quieres tomar notas durante la sesión.</span>
                 </li>
               </ul>
             </div>

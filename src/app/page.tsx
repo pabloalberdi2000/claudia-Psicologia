@@ -5,8 +5,24 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Portada */}
-      <section className="relative min-h-screen bg-gradient-to-br from-surface via-surface-container-low to-surface-container-high flex items-center pt-12 pb-stack-lg">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
+      <section className="relative min-h-screen flex items-center pt-12 pb-stack-lg overflow-hidden">
+        {/* Background Image with Parallax */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/home2.png"
+            alt="Claudia González Álvarez - Psicóloga profesional"
+            fill
+            className="w-full h-full object-cover grayscale-[15%]"
+            priority
+            style={{
+              filter: 'brightness(0.4)',
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"></div>
+        </div>
+
+        {/* Content */}
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-lg items-center">
 
             {/* Text and CTA - Left Side */}
@@ -14,7 +30,7 @@ export default function Home() {
               <div className="space-y-4">
                 <p className="text-secondary font-label-md uppercase tracking-widest">Bienvenido a tu espacio seguro</p>
                 <h1 className="font-display-lg text-display-lg text-primary leading-tight">
-                  Psicóloga General Sanitaria especializada en terapia online para adultos, familias e infancia-adolescencia.
+                  Psicóloga General Sanitaria especializada en terapia online para adultos, adolescentes y familias.
                 </h1>
                 <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-lg">
                   Un acompañamiento profesional desde la comodidad de tu hogar, donde la cercanía no entiende de distancias.
@@ -48,22 +64,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Image - Right Side */}
-            <div className="relative">
-              <div className="relative rounded-[2rem] overflow-hidden aspect-[3/4] bg-surface-container-high shadow-2xl">
-                <Image
-                  src="/home1.png"
-                  alt="Claudia González Álvarez - Psicóloga profesional"
-                  width={500}
-                  height={600}
-                  className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-500"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent"></div>
-              </div>
-              {/* Decorative element */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-secondary/10 rounded-full blur-2xl"></div>
-            </div>
+            {/* Decorative element */}
+            <div className="hidden md:block"></div>
           </div>
         </div>
       </section>
@@ -76,29 +78,29 @@ export default function Home() {
             <div className="w-12 h-1 bg-secondary mx-auto rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-            {/* Individual */}
+            {/* Terapia Adultos */}
             <div className="tonal-card p-stack-md rounded-xl flex flex-col items-center text-center">
               <div className="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-secondary text-headline-sm">person_search</span>
+                <span className="material-symbols-outlined text-secondary text-headline-sm">person</span>
               </div>
-              <h3 className="font-headline-sm text-headline-sm text-primary mb-4">Terapia individual adultos</h3>
-              <p className="text-on-surface-variant font-body-md">Acompañamiento personalizado para gestionar la ansiedad, el estrés o procesos de duelo en tu etapa adulta.</p>
+              <h3 className="font-headline-sm text-headline-sm text-primary mb-4">Terapia Adultos</h3>
+              <p className="text-on-surface-variant font-body-md">Acompañamiento personalizado para gestionar la ansiedad, el estrés, relaciones y procesos de transformación personal en tu etapa adulta.</p>
             </div>
-            {/* Familiar */}
+            {/* Asesoramiento Familiar */}
             <div className="tonal-card p-stack-md rounded-xl flex flex-col items-center text-center">
               <div className="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-6">
                 <span className="material-symbols-outlined text-secondary text-headline-sm">family_restroom</span>
               </div>
-              <h3 className="font-headline-sm text-headline-sm text-primary mb-4">Asesoramiento familiar</h3>
-              <p className="text-on-surface-variant font-body-md">Herramientas prácticas para mejorar la comunicación y resolver conflictos en el núcleo del hogar.</p>
+              <h3 className="font-headline-sm text-headline-sm text-primary mb-4">Asesoramiento Familiar</h3>
+              <p className="text-on-surface-variant font-body-md">Herramientas prácticas para mejorar la comunicación, fortalecer los vínculos y resolver conflictos en el núcleo del hogar.</p>
             </div>
-            {/* Infantil */}
+            {/* Terapia Adolescentes */}
             <div className="tonal-card p-stack-md rounded-xl flex flex-col items-center text-center">
               <div className="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-secondary text-headline-sm">child_care</span>
+                <span className="material-symbols-outlined text-secondary text-headline-sm">school</span>
               </div>
-              <h3 className="font-headline-sm text-headline-sm text-primary mb-4">Terapia infantojuvenil</h3>
-              <p className="text-on-surface-variant font-body-md">Intervención especializada para niños y adolescentes, centrada en su bienestar emocional y desarrollo.</p>
+              <h3 className="font-headline-sm text-headline-sm text-primary mb-4">Terapia Adolescentes</h3>
+              <p className="text-on-surface-variant font-body-md">Intervención especializada para jóvenes, centrada en la gestión emocional, la autoestima y las herramientas para afrontar los retos de esta etapa formativa.</p>
             </div>
           </div>
         </div>
