@@ -35,7 +35,7 @@ export default function MarkdownRenderer({ content }: { content: string }) {
     }
     // List items
     else if (line.startsWith('- ')) {
-      const listItems: JSX.Element[] = []
+      const listItems: React.ReactElement[] = []
       let listKey = 0
       while (i < lines.length && lines[i].startsWith('- ')) {
         const itemText = lines[i].replace('- ', '')
