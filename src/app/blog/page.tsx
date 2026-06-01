@@ -1,32 +1,34 @@
+'use client'
+
 import Link from 'next/link'
-import type { Metadata } from 'next'
+import { useState, useEffect } from 'react'
 import { getBlogPosts } from '@/lib/contentful'
 
-export const metadata: Metadata = {
-  title: 'Blog de Psicología | Artículos sobre Terapia, Ansiedad y Bienestar',
-  description: 'Lee artículos educativos sobre psicología, terapia online, manejo de ansiedad, estrés, relaciones y crecimiento personal. Consejos de una psicóloga general sanitaria.',
-  keywords: 'blog psicología, artículos terapia, ansiedad, estrés, relaciones, crecimiento personal, mindfulness, bienestar emocional',
-  openGraph: {
-    title: 'Blog de Psicología | Claudia González',
-    description: 'Artículos educativos sobre terapia, ansiedad, estrés y bienestar emocional',
-    type: 'website',
-  },
-}
+const CATEGORIES = [
+  { label: 'Todos', value: 'todos', icon: '📚' },
+  { label: 'Salud Mental', value: 'Salud Mental', icon: '🧠' },
+  { label: 'Relaciones', value: 'Relaciones', icon: '💑' },
+  { label: 'Crecimiento Personal', value: 'Crecimiento Personal', icon: '🌱' },
+]
 
-const POSTS_PER_PAGE = 5
+export default function BlogIndex() {
+  const [posts, setPosts] = useState<any[]>([])
+  const [selectedCategory, setSelectedCategory] = useState('todos')
+  const [isLoading, setIsLoading] = useState(true)
 
-export default async function BlogIndex({
-  searchParams,
-}: {
-  searchParams: { page?: string }
-}) {
-  const currentPage = Number(searchParams.page) || 1
-  const allPosts = await getBlogPosts(100)
+  useEffect(() => {
+    const loadPosts = async () => {
+      setIsLoading(true)
+      const allPosts = await getBlogPosts(100)
+      setPosts(allPosts)
+      setIsLoading(false)
+    }
+    loadPosts()
+  }, [])
 
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE)
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE
-  const endIndex = startIndex + POSTS_PER_PAGE
-  const paginatedPosts = allPosts.slice(startIndex, endIndex)
+  const filteredPosts = selectedCategory === 'todos'
+    ? posts
+    : posts.filter(post => post.fields.category === selectedCategory)
 
   return (
     <>
@@ -43,134 +45,97 @@ export default async function BlogIndex({
         </div>
       </section>
 
-      {/* Blog Posts Grid */}
+      {/* Category Filter */}
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
-        {paginatedPosts.length > 0 ? (
-          <>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-              {paginatedPosts.map((post) => (
-                <Link
-                  key={post.sys.id}
-                  href={`/blog/${post.fields.slug}`}
-                  className="tonal-card p-stack-md rounded-xl hover:shadow-lg transition-shadow group"
-                >
-                  <div className="flex flex-col h-full">
-                    {/* Category */}
-                    <div className="mb-3">
-                      <span className="inline-block px-3 py-1 bg-secondary/20 text-secondary rounded-full text-label-sm font-bold">
-                        {post.fields.category || 'Artículo'}
-                      </span>
-                    </div>
+        <div className="mb-stack-md">
+          <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Filtra por categoría</h2>
+          <div className="flex flex-wrap gap-3">
+            {CATEGORIES.map((category) => (
+              <button
+                key={category.value}
+                onClick={() => setSelectedCategory(category.value)}
+                className={`px-4 py-2 rounded-full font-label-md transition-all flex items-center gap-2 ${
+                  selectedCategory === category.value
+                    ? 'bg-secondary text-on-secondary shadow-md'
+                    : 'bg-surface-container-low text-on-surface-variant border border-outline-variant hover:bg-surface-container hover:border-secondary'
+                }`}
+              >
+                <span className="text-lg">{category.icon}</span>
+                {category.label}
+              </button>
+            ))}
+          </div>
+        </div>
 
-                    {/* Title */}
-                    <h2 className="font-headline-sm text-headline-sm text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
-                      {post.fields.title}
-                    </h2>
+        {/* Results Count */}
+        <p className="text-on-surface-variant font-body-md mb-stack-md">
+          {filteredPosts.length === 0
+            ? 'No hay artículos en esta categoría'
+            : `${filteredPosts.length} artículo${filteredPosts.length !== 1 ? 's' : ''} encontrado${filteredPosts.length !== 1 ? 's' : ''}`
+          }
+        </p>
 
-                    {/* Excerpt */}
-                    <p className="text-on-surface-variant font-body-md mb-4 flex-grow line-clamp-3">
-                      {post.fields.excerpt}
-                    </p>
-
-                    {/* Meta */}
-                    <div className="flex items-center justify-between pt-4 border-t border-outline-variant/20">
-                      <time className="text-label-sm text-on-surface-variant">
-                        {new Date(post.fields.publishedAt).toLocaleDateString('es-ES', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        })}
-                      </time>
-                      <span className="text-label-sm text-secondary">
-                        {post.fields.readTime || '5 min'} lectura
-                      </span>
-                    </div>
+        {/* Blog Posts Grid */}
+        {!isLoading && filteredPosts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            {filteredPosts.map((post) => (
+              <Link
+                key={post.sys.id}
+                href={`/blog/${post.fields.slug}`}
+                className="tonal-card p-stack-md rounded-xl hover:shadow-lg transition-shadow group"
+              >
+                <div className="flex flex-col h-full">
+                  {/* Category */}
+                  <div className="mb-3">
+                    <span className="inline-block px-3 py-1 bg-secondary/20 text-secondary rounded-full text-label-sm font-bold">
+                      {post.fields.category || 'Artículo'}
+                    </span>
                   </div>
-                </Link>
-              ))}
-            </div>
 
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="flex justify-center items-center gap-2 mt-stack-lg">
-                {/* Previous Button */}
-                {currentPage > 1 && (
-                  <Link
-                    href={`/blog?page=${currentPage - 1}`}
-                    className="px-4 py-2 border border-secondary text-secondary rounded-lg hover:bg-secondary/10 transition-colors"
-                  >
-                    ← Anterior
-                  </Link>
-                )}
+                  {/* Title */}
+                  <h2 className="font-headline-sm text-headline-sm text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
+                    {post.fields.title}
+                  </h2>
 
-                {/* Page Numbers */}
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <Link
-                    key={page}
-                    href={`/blog?page=${page}`}
-                    className={`px-3 py-2 rounded-lg transition-colors ${
-                      page === currentPage
-                        ? 'bg-secondary text-on-secondary font-bold'
-                        : 'border border-outline-variant text-on-surface-variant hover:border-secondary'
-                    }`}
-                  >
-                    {page}
-                  </Link>
-                ))}
+                  {/* Excerpt */}
+                  <p className="text-on-surface-variant font-body-md mb-4 flex-grow line-clamp-3">
+                    {post.fields.excerpt}
+                  </p>
 
-                {/* Next Button */}
-                {currentPage < totalPages && (
-                  <Link
-                    href={`/blog?page=${currentPage + 1}`}
-                    className="px-4 py-2 border border-secondary text-secondary rounded-lg hover:bg-secondary/10 transition-colors"
-                  >
-                    Siguiente →
-                  </Link>
-                )}
-              </div>
-            )}
-          </>
+                  {/* Meta */}
+                  <div className="flex items-center justify-between pt-4 border-t border-outline-variant/20">
+                    <time className="text-label-sm text-on-surface-variant">
+                      {new Date(post.fields.publishedAt).toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </time>
+                    <span className="text-label-sm text-secondary">
+                      {post.fields.readTime || '5 min'} lectura
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : isLoading ? (
+          <div className="tonal-card p-stack-md rounded-xl text-center py-16">
+            <p className="text-on-surface-variant font-body-md">Cargando artículos...</p>
+          </div>
         ) : (
           <div className="tonal-card p-stack-md rounded-xl text-center py-16">
             <p className="text-on-surface-variant font-body-md mb-4">
-              Próximamente habrá artículos disponibles sobre psicología y bienestar.
+              No hay artículos disponibles en esta categoría.
             </p>
-            <Link
-              href="/"
+            <button
+              onClick={() => setSelectedCategory('todos')}
               className="inline-block px-6 py-3 bg-secondary text-on-secondary rounded-full font-label-md hover:scale-105 transition-transform"
             >
-              Volver al inicio
-            </Link>
+              Ver todos los artículos
+            </button>
           </div>
         )}
-      </section>
-
-      {/* Categories Section */}
-      <section className="bg-surface-container-low py-stack-lg">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-          <div className="mb-stack-md text-center">
-            <h2 className="font-headline-md text-headline-md text-primary mb-4">Categorías</h2>
-            <div className="w-12 h-1 bg-secondary mx-auto rounded-full"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter max-w-4xl mx-auto">
-            <Link href="/blog" className="tonal-card p-stack-md rounded-xl text-center hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-3">🧠</div>
-              <h3 className="font-headline-sm text-headline-sm text-primary">Salud Mental</h3>
-              <p className="text-on-surface-variant font-body-md text-sm mt-2">Artículos sobre ansiedad, depresión y bienestar</p>
-            </Link>
-            <Link href="/blog" className="tonal-card p-stack-md rounded-xl text-center hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-3">💑</div>
-              <h3 className="font-headline-sm text-headline-sm text-primary">Relaciones</h3>
-              <p className="text-on-surface-variant font-body-md text-sm mt-2">Consejos para mejorar relaciones personales</p>
-            </Link>
-            <Link href="/blog" className="tonal-card p-stack-md rounded-xl text-center hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-3">🌱</div>
-              <h3 className="font-headline-sm text-headline-sm text-primary">Crecimiento Personal</h3>
-              <p className="text-on-surface-variant font-body-md text-sm mt-2">Desarrollo personal y autoconocimiento</p>
-            </Link>
-          </div>
-        </div>
       </section>
 
       {/* CTA Final */}
