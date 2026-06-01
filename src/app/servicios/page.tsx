@@ -38,7 +38,7 @@ export default function Servicios() {
         'Problemas de conducta en hijos',
         'Preparación para cambios familiares',
         'Separación y divorcio',
-        'Mala convivencia y enojo recurrente',
+        'Mala convivencia y enfado recurrente',
         'Creación de vínculos más seguros',
       ],
     },

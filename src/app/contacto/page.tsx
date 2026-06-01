@@ -122,7 +122,7 @@ export default function Contacto() {
               </li>
               <li className="flex justify-between">
                 <span className="font-semibold">Horario laboral:</span>
-                <span>13:00 - 21:00</span>
+                <span>10:00 - 20:00</span>
               </li>
               <li className="flex justify-between">
                 <span className="font-semibold">Sábados:</span>

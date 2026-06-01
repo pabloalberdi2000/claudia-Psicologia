@@ -63,50 +63,38 @@ export default function SobreMi() {
             <h2 className="font-headline-md text-headline-md text-primary mb-4">Áreas de especialización</h2>
             <div className="w-12 h-1 bg-secondary mx-auto rounded-full"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             <div className="tonal-card p-stack-md rounded-xl">
-              <div className="flex items-start gap-4">
-                <span className="material-symbols-outlined text-secondary text-headline-sm flex-shrink-0 mt-2">psychology</span>
+              <div className="flex flex-col items-center text-center space-y-4">
+                <span className="material-symbols-outlined text-secondary text-4xl">person_search</span>
                 <div>
                   <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Terapia individual adultos</h3>
                   <p className="text-on-surface-variant font-body-md">
-                    Acompañamiento personalizado para gestionar ansiedad, estrés, depresión, fobias, procesos de duelo y otros desafíos emocionales en la etapa adulta.
+                    Acompañamiento personalizado para gestionar ansiedad, estrés, depresión, baja autoestima, dependencia emocional y estrés laboral.
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="tonal-card p-stack-md rounded-xl">
-              <div className="flex items-start gap-4">
-                <span className="material-symbols-outlined text-secondary text-headline-sm flex-shrink-0 mt-2">family_restroom</span>
+              <div className="flex flex-col items-center text-center space-y-4">
+                <span className="material-symbols-outlined text-secondary text-4xl">family_restroom</span>
                 <div>
                   <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Asesoramiento familiar</h3>
                   <p className="text-on-surface-variant font-body-md">
-                    Herramientas prácticas para mejorar la comunicación familiar, resolver conflictos y fortalecer los vínculos en el núcleo del hogar.
+                    Herramientas prácticas para mejorar la comunicación, resolver conflictos, gestionar límites y fortalecer vínculos seguros en el hogar.
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="tonal-card p-stack-md rounded-xl">
-              <div className="flex items-start gap-4">
-                <span className="material-symbols-outlined text-secondary text-headline-sm flex-shrink-0 mt-2">child_care</span>
+              <div className="flex flex-col items-center text-center space-y-4">
+                <span className="material-symbols-outlined text-secondary text-4xl">school</span>
                 <div>
-                  <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Terapia infantojuvenil</h3>
+                  <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Terapia con adolescentes</h3>
                   <p className="text-on-surface-variant font-body-md">
-                    Intervención especializada para niños y adolescentes, centrada en su bienestar emocional, desarrollo saludable y adaptación a los cambios.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="tonal-card p-stack-md rounded-xl">
-              <div className="flex items-start gap-4">
-                <span className="material-symbols-outlined text-secondary text-headline-sm flex-shrink-0 mt-2">sentiment_satisfied</span>
-                <div>
-                  <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Crecimiento personal</h3>
-                  <p className="text-on-surface-variant font-body-md">
-                    Acompañamiento en procesos de autoconocimiento, desarrollo de habilidades sociales y emocionales, y construcción de una vida más plena.
+                    Intervención especializada para jóvenes, centrada en bienestar emocional, identidad, gestión del estrés académico y adaptación a cambios.
                   </p>
                 </div>
               </div>
