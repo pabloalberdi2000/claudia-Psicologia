@@ -31,7 +31,7 @@ export default function Servicios() {
       descripcion: 'Mejora de dinámicas y comunicación en la familia',
       temas: [
         'Conflictos entre padres e hijos',
-        'Comunicación familiar mejora',
+        'Mejora la comunicación familiar',
         'Dinámicas disfuncionales',
         'Orientación y apoyo parental',
         'Gestión de límites y normas',

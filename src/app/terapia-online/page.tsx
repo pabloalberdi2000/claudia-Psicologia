@@ -36,7 +36,7 @@ export default function TerapiaOnline() {
             {
               paso: 1,
               titulo: 'Primer contacto',
-              descripcion: 'Nos cuentas qué te preocupa y agendamos tu sesión gratuita para valorar cómo puedo ayudarte. Respondo en menos de 24 horas.',
+              descripcion: 'Me cuentas qué te preocupa y agendamos tu sesión gratuita para valorar cómo puedo ayudarte. Respondo en menos de 24 horas.',
               detalles: [
                 'Sin compromisos previos',
                 'Conocemos tus expectativas',
