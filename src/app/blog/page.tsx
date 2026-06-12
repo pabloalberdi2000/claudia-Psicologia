@@ -3,6 +3,12 @@ import { getBlogPosts, getBlogCategories } from '@/lib/contentful'
 import BlogFilterClient from '@/components/BlogFilterClient'
 
 /**
+ * Fuerza a que SIEMPRE consulte Contentful sin caché
+ * revalidate: 0 = Sin caché (SSR)
+ */
+export const revalidate = 0
+
+/**
  * Componente servidor para cargar datos del blog dinámicamente
  */
 export default async function BlogIndex() {

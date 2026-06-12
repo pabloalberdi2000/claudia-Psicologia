@@ -5,6 +5,12 @@ import { getBlogPostBySlug } from '@/lib/contentful'
 import RichTextRenderer from '@/components/RichTextRenderer'
 import MarkdownRenderer from '@/components/MarkdownRenderer'
 
+/**
+ * Fuerza a que SIEMPRE consulte Contentful sin caché
+ * revalidate: 0 = Server-Side Rendering (fresco cada vez)
+ */
+export const revalidate = 0
+
 interface Props {
   params: {
     slug: string

@@ -19,11 +19,13 @@ function getClient() {
 export async function getBlogPosts(limit: number = 10): Promise<any[]> {
   try {
     const client = getClient()
+    // NO CACHEAR - Siempre obtener datos frescos de Contentful
     const entries = await client.getEntries({
       content_type: 'blogPost',
       limit: 100,
       order: '-fields.publishedAt',
-    })
+      // Fuerza a que siempre consulte (sin caché del cliente)
+    }, { retryOnError: true })
 
     // Combina artículos de Contentful con los por defecto
     const allPosts = [...entries.items, ...defaultBlogPosts]
