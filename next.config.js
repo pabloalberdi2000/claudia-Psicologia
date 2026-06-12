@@ -40,26 +40,15 @@ const nextConfig = {
             key: 'X-Content-Type-Options',
             value: 'nosniff'
           },
-          // Add security headers for SEO
           {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload'
           },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
-          },
         ],
       },
-      // Prevent crawling of next.js internals
+      // Cache for static assets
       {
-        source: '/:path*',
-        has: [
-          {
-            type: 'pathname',
-            value: '/_next',
-          },
-        ],
+        source: '/static/:path*',
         headers: [
           {
             key: 'Cache-Control',

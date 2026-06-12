@@ -78,3 +78,30 @@ export async function getBlogPostById(id: string): Promise<any | null> {
     return null
   }
 }
+
+/**
+ * Obtiene todas las categorías únicas de los posts
+ * Combina categorías de Contentful y posts por defecto
+ * Retorna un array de categorías únicas ordenadas alfabéticamente
+ */
+export async function getBlogCategories(): Promise<string[]> {
+  try {
+    // Obtener todos los posts (sin límite)
+    const allPosts = await getBlogPosts(1000)
+
+    // Extraer categorías únicas
+    const categoriesSet = new Set<string>()
+    allPosts.forEach((post) => {
+      if (post.fields.category) {
+        categoriesSet.add(post.fields.category)
+      }
+    })
+
+    // Convertir a array y ordenar alfabéticamente
+    return Array.from(categoriesSet).sort()
+  } catch (error) {
+    console.error('Error fetching blog categories:', error)
+    // Retornar categorías por defecto en caso de error
+    return ['Salud Mental', 'Relaciones', 'Crecimiento Personal']
+  }
+}

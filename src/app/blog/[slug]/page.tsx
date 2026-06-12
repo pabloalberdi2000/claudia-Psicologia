@@ -1,145 +1,150 @@
-import Link from 'next/link'
 import type { Metadata } from 'next'
-import { getBlogPostBySlug, getBlogPosts } from '@/lib/contentful'
+import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import { getBlogPostBySlug } from '@/lib/contentful'
 import RichTextRenderer from '@/components/RichTextRenderer'
 import MarkdownRenderer from '@/components/MarkdownRenderer'
-import { notFound } from 'next/navigation'
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
+interface Props {
+  params: {
+    slug: string
+  }
+}
+
+/**
+ * Generar metadata dinámicamente para SEO
+ */
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPostBySlug(params.slug)
 
   if (!post) {
     return {
       title: 'Artículo no encontrado',
+      description: 'El artículo que buscas no existe',
     }
   }
 
   return {
     title: `${post.fields.title} | Blog de Psicología`,
     description: post.fields.excerpt,
-    keywords: post.fields.keywords || post.fields.category,
-    authors: [{ name: 'Claudia González Álvarez' }],
+    keywords: post.fields.keywords || `psicología, ${post.fields.category}`,
+    authors: [{ name: post.fields.author }],
     openGraph: {
       title: post.fields.title,
       description: post.fields.excerpt,
       type: 'article',
       publishedTime: post.fields.publishedAt,
-      authors: ['Claudia González Álvarez'],
+      authors: [post.fields.author],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.fields.title,
-      description: post.fields.excerpt,
+    alternates: {
+      canonical: `https://cgapsicologia.com/blog/${post.fields.slug}`,
     },
   }
 }
 
-export async function generateStaticParams() {
-  const posts = await getBlogPosts(100)
-  return posts.map((post) => ({
-    slug: post.fields.slug,
-  }))
-}
-
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string }
-}) {
+export default async function BlogPostPage({ params }: Props) {
   const post = await getBlogPostBySlug(params.slug)
 
   if (!post) {
     notFound()
   }
 
-  const allPosts = await getBlogPosts(100)
-  const relatedPosts = allPosts.slice(0, 3).filter((p) => p.fields.slug !== params.slug)
+  const {
+    title,
+    excerpt,
+    author,
+    category,
+    publishedAt,
+    readTime,
+    content,
+  } = post.fields
+
+  // Calcular fecha formateada
+  const publishDate = new Date(publishedAt).toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 
   return (
     <>
-      {/* Breadcrumb */}
-      <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4">
-        <div className="flex items-center gap-2 text-label-sm">
-          <Link href="/" className="text-secondary hover:underline">
-            Inicio
-          </Link>
-          <span className="text-on-surface-variant">/</span>
-          <Link href="/blog" className="text-secondary hover:underline">
-            Blog
-          </Link>
-          <span className="text-on-surface-variant">/</span>
-          <span className="text-on-surface-variant">{post.fields.title}</span>
-        </div>
-      </section>
-
-      {/* Article Header */}
-      <article className="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-md">
-        <div className="space-y-6 mb-stack-lg">
-          {/* Category */}
-          <div>
-            <span className="inline-block px-3 py-1 bg-secondary/20 text-secondary rounded-full text-label-sm font-bold">
-              {post.fields.category || 'Artículo'}
+      {/* Hero Section */}
+      <section className="bg-brand-light py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          {/* Category Badge */}
+          <div className="inline-block mb-4">
+            <span className="inline-block px-4 py-2 bg-brand-gold/20 text-brand-gold rounded-full text-sm font-semibold">
+              {category || 'Artículo'}
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="font-display-lg text-display-lg text-primary leading-tight">
-            {post.fields.title}
+          <h1 className="text-5xl font-bold text-brand-dark mb-6 leading-tight">
+            {title}
           </h1>
 
-          {/* Meta Information */}
-          <div className="flex flex-wrap items-center gap-4 text-on-surface-variant font-body-md border-b border-outline-variant/20 pb-6">
+          {/* Meta Info */}
+          <div className="flex flex-wrap items-center gap-6 text-brand-dark/70 text-sm">
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg">calendar_today</span>
-              <time>
-                {new Date(post.fields.publishedAt).toLocaleDateString('es-ES', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
+              <span>✍️</span>
+              <span>{author}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg">schedule</span>
-              <span>{post.fields.readTime || '5 min'} de lectura</span>
+              <span>📅</span>
+              <time dateTime={publishedAt}>{publishDate}</time>
             </div>
-            {post.fields.author && (
+            {readTime && (
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg">person</span>
-                <span>{post.fields.author}</span>
+                <span>⏱️</span>
+                <span>{readTime} lectura</span>
               </div>
             )}
           </div>
-        </div>
 
-        {/* Article Content */}
-        <div className="max-w-none mb-stack-lg">
-          {post.fields.content ? (
-            typeof post.fields.content === 'string' ? (
-              <MarkdownRenderer content={post.fields.content} />
+          {/* Excerpt */}
+          <p className="mt-6 text-xl text-brand-dark/80 italic border-l-4 border-brand-gold pl-6">
+            {excerpt}
+          </p>
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
+          {/* Rich Text Content */}
+          <div className="prose prose-lg max-w-none mb-12">
+            {typeof content === 'string' ? (
+              // Si es markdown plano (de defaultBlogPosts)
+              <MarkdownRenderer content={content} />
             ) : (
-              <RichTextRenderer document={post.fields.content} />
-            )
-          ) : (
-            <p className="text-on-surface-variant">{post.fields.excerpt}</p>
-          )}
-        </div>
+              // Si es Rich Text de Contentful
+              <RichTextRenderer document={content} />
+            )}
+          </div>
 
-        {/* Article Footer */}
-        <div className="border-t border-outline-variant/20 pt-8 mt-stack-lg">
+          {/* Author Bio Section */}
+          <div className="bg-brand-light p-8 rounded-lg border-l-4 border-brand-gold mt-16 mb-12">
+            <h3 className="text-xl font-bold text-brand-dark mb-2">
+              Sobre el autor
+            </h3>
+            <p className="text-brand-dark/80">
+              <strong>{author}</strong> es una psicóloga general sanitaria especializada en terapia online.
+              Ofrece sesiones de psicoterapia para adultos, adolescentes y familias.
+            </p>
+          </div>
+
           {/* Tags */}
-          {post.fields.tags && post.fields.tags.length > 0 && (
-            <div className="mb-8">
-              <h3 className="font-headline-sm text-primary mb-3">Etiquetas</h3>
+          {post.fields.tags && (
+            <div className="mb-12">
+              <h3 className="text-lg font-bold text-brand-dark mb-4">Etiquetas</h3>
               <div className="flex flex-wrap gap-2">
-                {post.fields.tags.map((tag: string) => (
+                {(Array.isArray(post.fields.tags)
+                  ? post.fields.tags
+                  : post.fields.tags.split(',').map((t: string) => t.trim())
+                ).map((tag: string, idx: number) => (
                   <span
-                    key={tag}
-                    className="px-3 py-1 bg-surface-container-low text-on-surface-variant rounded-full text-label-sm"
+                    key={idx}
+                    className="px-3 py-1 bg-brand-gold/20 text-brand-gold rounded-full text-sm font-medium"
                   >
                     #{tag}
                   </span>
@@ -148,76 +153,38 @@ export default async function BlogPost({
             </div>
           )}
 
-          {/* Author Bio */}
-          <div className="bg-surface-container-low p-6 rounded-xl mb-8">
-            <div className="flex items-start gap-4">
-              <div className="flex-1">
-                <h4 className="font-headline-sm text-primary mb-2">Claudia González Álvarez</h4>
-                <p className="text-on-surface-variant font-body-md">
-                  Psicóloga General Sanitaria especializada en terapia online. Con enfoque integrativo basado en evidencia científica, combino técnicas de terapia cognitivo-conductual, mindfulness y ACT para acompañar a mis pacientes en su camino hacia el bienestar.
-                </p>
-              </div>
-            </div>
+          {/* CTA Section */}
+          <div className="bg-brand-dark text-white p-12 rounded-lg text-center mt-16">
+            <h3 className="text-2xl font-bold mb-4">
+              ¿Necesitas ayuda profesional?
+            </h3>
+            <p className="mb-6 text-gray-100">
+              Si resonaste con este artículo, te invito a contactarme para una sesión de terapia gratuita.
+            </p>
+            <Link
+              href="/contacto"
+              className="inline-block px-8 py-3 bg-brand-gold text-brand-dark rounded-full font-bold hover:bg-opacity-90 transition-all"
+            >
+              Reservar sesión gratuita
+            </Link>
           </div>
         </div>
-      </article>
+      </section>
 
-      {/* Related Posts */}
-      {relatedPosts.length > 0 && (
-        <section className="bg-surface-container-low py-stack-lg">
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <div className="mb-stack-md">
-              <h2 className="font-headline-md text-headline-md text-primary mb-4">Artículos relacionados</h2>
-              <div className="w-12 h-1 bg-secondary rounded-full"></div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-              {relatedPosts.map((relatedPost) => (
-                <Link
-                  key={relatedPost.sys.id}
-                  href={`/blog/${relatedPost.fields.slug}`}
-                  className="tonal-card p-stack-md rounded-xl hover:shadow-lg transition-shadow group"
-                >
-                  <div>
-                    <span className="inline-block px-3 py-1 bg-secondary/20 text-secondary rounded-full text-label-sm font-bold mb-3">
-                      {relatedPost.fields.category}
-                    </span>
-                    <h3 className="font-headline-sm text-headline-sm text-primary mb-2 group-hover:text-secondary transition-colors line-clamp-2">
-                      {relatedPost.fields.title}
-                    </h3>
-                    <p className="text-on-surface-variant font-body-md text-sm mb-3 line-clamp-2">
-                      {relatedPost.fields.excerpt}
-                    </p>
-                    <time className="text-label-sm text-on-surface-variant">
-                      {new Date(relatedPost.fields.publishedAt).toLocaleDateString('es-ES', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </time>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* CTA */}
-      <section className="bg-primary text-on-primary py-stack-md">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
-          <h2 className="font-headline-sm text-headline-sm text-on-primary mb-2">
-            ¿Te ha resultado útil este artículo?
+      {/* Related Posts Section (Optional) */}
+      <section className="py-20 px-6 bg-brand-light">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-brand-dark mb-12 text-center">
+            Más artículos
           </h2>
-          <p className="font-body-md text-on-primary-container mb-4">
-            Si tienes dudas o quieres profundizar en este tema, puedo ayudarte con una sesión personalizada.
-          </p>
-          <Link
-            href="/contacto"
-            className="inline-block px-8 py-4 bg-secondary-fixed text-on-secondary-fixed rounded-full font-label-md hover:bg-secondary-fixed-dim transition-colors"
-          >
-            Agendar consulta
-          </Link>
+          <div className="text-center">
+            <Link
+              href="/blog"
+              className="inline-block px-8 py-3 bg-brand-gold text-brand-dark rounded-full font-bold hover:scale-105 transition-transform"
+            >
+              ← Volver al blog
+            </Link>
+          </div>
         </div>
       </section>
     </>

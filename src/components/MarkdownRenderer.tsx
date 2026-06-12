@@ -1,105 +1,196 @@
+'use client'
+
 import React from 'react'
 
-export default function MarkdownRenderer({ content }: { content: string }) {
-  // Procesa el markdown manualmente para renderizar correctamente
-  const lines = content.split('\n')
-  const elements: React.ReactNode[] = []
-  let i = 0
-  let elementKey = 0
-
-  while (i < lines.length) {
-    const line = lines[i]
-
-    // Headings
-    if (line.startsWith('# ')) {
-      elements.push(
-        <h1 key={elementKey++} className="font-display-lg text-display-lg text-primary leading-tight mt-8 mb-4">
-          {line.replace('# ', '')}
-        </h1>
-      )
-      i++
-    } else if (line.startsWith('## ')) {
-      elements.push(
-        <h2 key={elementKey++} className="font-headline-md text-headline-md text-primary leading-tight mt-6 mb-3">
-          {line.replace('## ', '')}
-        </h2>
-      )
-      i++
-    } else if (line.startsWith('### ')) {
-      elements.push(
-        <h3 key={elementKey++} className="font-headline-sm text-headline-sm text-primary leading-tight mt-4 mb-2">
-          {line.replace('### ', '')}
-        </h3>
-      )
-      i++
-    }
-    // List items
-    else if (line.startsWith('- ')) {
-      const listItems: React.ReactElement[] = []
-      let listKey = 0
-      while (i < lines.length && lines[i].startsWith('- ')) {
-        const itemText = lines[i].replace('- ', '')
-        const renderedItemText = renderInlineMarkdown(itemText)
-        listItems.push(
-          <li key={listKey++} className="text-on-surface-variant font-body-md mb-2">
-            {renderedItemText}
-          </li>
-        )
-        i++
-      }
-      elements.push(
-        <ul key={elementKey++} className="list-disc ml-6 mb-4">
-          {listItems}
-        </ul>
-      )
-    }
-    // Paragraphs (text that's not empty and not a heading/list)
-    else if (line.trim() && !line.startsWith('#')) {
-      const renderedText = renderInlineMarkdown(line)
-      elements.push(
-        <p key={elementKey++} className="text-on-surface-variant font-body-md leading-relaxed mb-4">
-          {renderedText}
-        </p>
-      )
-      i++
-    }
-    // Empty lines
-    else {
-      i++
-    }
-  }
-
-  return <div className="space-y-2">{elements}</div>
+interface MarkdownRendererProps {
+  content: string
 }
 
-// Helper function to render inline markdown (bold, italic, etc)
-function renderInlineMarkdown(text: string): (string | React.ReactElement)[] | string {
-  const boldRegex = /\*\*(.*?)\*\*/g
-  const parts: (string | React.ReactElement)[] = []
+/**
+ * Renderiza markdown plano como HTML
+ * Usado para contenido de defaultBlogPosts que está en formato markdown
+ */
+const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
+  // Convertir markdown a elementos HTML básicos
+  const parseMarkdown = (markdown: string): React.ReactNode[] => {
+    const lines = markdown.split('\n')
+    const elements: React.ReactNode[] = []
+    let listItems: string[] = []
+    let inList = false
+    let listType: 'unordered' | 'ordered' = 'unordered'
+
+    const flushList = (index: number) => {
+      if (listItems.length > 0) {
+        if (listType === 'unordered') {
+          elements.push(
+            <ul key={`ul-${index}`} className="list-disc list-inside my-4">
+              {listItems.map((item, i) => (
+                <li key={`li-${i}`} className="text-on-surface">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )
+        } else {
+          elements.push(
+            <ol key={`ol-${index}`} className="list-decimal list-inside my-4">
+              {listItems.map((item, i) => (
+                <li key={`li-${i}`} className="text-on-surface">
+                  {item}
+                </li>
+              ))}
+            </ol>
+          )
+        }
+        listItems = []
+        inList = false
+      }
+    }
+
+    lines.forEach((line, index) => {
+      const trimmed = line.trim()
+
+      // Heading 1
+      if (trimmed.startsWith('# ')) {
+        flushList(index)
+        elements.push(
+          <h1 key={index} className="text-4xl font-bold text-primary my-6">
+            {trimmed.substring(2)}
+          </h1>
+        )
+      }
+      // Heading 2
+      else if (trimmed.startsWith('## ')) {
+        flushList(index)
+        elements.push(
+          <h2 key={index} className="text-3xl font-bold text-primary my-5">
+            {trimmed.substring(3)}
+          </h2>
+        )
+      }
+      // Heading 3
+      else if (trimmed.startsWith('### ')) {
+        flushList(index)
+        elements.push(
+          <h3 key={index} className="text-2xl font-bold text-primary my-4">
+            {trimmed.substring(4)}
+          </h3>
+        )
+      }
+      // Unordered List
+      else if (trimmed.startsWith('- ')) {
+        if (!inList || listType !== 'unordered') {
+          flushList(index)
+          inList = true
+          listType = 'unordered'
+        }
+        listItems.push(trimmed.substring(2))
+      }
+      // Ordered List
+      else if (trimmed.match(/^\d+\. /)) {
+        if (!inList || listType !== 'ordered') {
+          flushList(index)
+          inList = true
+          listType = 'ordered'
+        }
+        listItems.push(trimmed.replace(/^\d+\. /, ''))
+      }
+      // Blockquote
+      else if (trimmed.startsWith('> ')) {
+        flushList(index)
+        elements.push(
+          <blockquote
+            key={index}
+            className="border-l-4 border-secondary pl-4 italic my-4 text-on-surface-variant"
+          >
+            {trimmed.substring(2)}
+          </blockquote>
+        )
+      }
+      // Horizontal Rule
+      else if (trimmed === '---' || trimmed === '***') {
+        flushList(index)
+        elements.push(<hr key={index} className="my-6 border-outline-variant" />)
+      }
+      // Paragraph (regular text)
+      else if (trimmed.length > 0) {
+        flushList(index)
+        // Parse inline formatting (bold, italic, code)
+        const formatted = parseInlineMarkdown(trimmed)
+        elements.push(
+          <p key={index} className="text-on-surface my-3 leading-relaxed">
+            {formatted}
+          </p>
+        )
+      }
+      // Empty lines
+      else if (trimmed.length === 0 && inList) {
+        flushList(index)
+      }
+    })
+
+    flushList(lines.length)
+    return elements
+  }
+
+  return <div className="prose-content">{parseMarkdown(content)}</div>
+}
+
+/**
+ * Parse inline markdown formatting (bold, italic, code)
+ */
+function parseInlineMarkdown(text: string): React.ReactNode[] {
+  const elements: React.ReactNode[] = []
   let lastIndex = 0
-  let match: RegExpExecArray | null
 
-  // Reiniciar el regex para que funcione correctamente
-  boldRegex.lastIndex = 0
+  // Regex para encontrar **bold**, *italic*, `code`
+  const regex = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g
+  let match
 
-  while ((match = boldRegex.exec(text)) !== null) {
+  while ((match = regex.exec(text)) !== null) {
     // Agregar texto antes del match
     if (match.index > lastIndex) {
-      parts.push(text.slice(lastIndex, match.index))
+      elements.push(text.substring(lastIndex, match.index))
     }
-    // Agregar texto en negrita
-    parts.push(
-      <strong key={`bold-${match.index}`} className="font-bold text-primary">
-        {match[1]}
-      </strong>
-    )
-    lastIndex = match.index + match[0].length
+
+    const matched = match[0]
+    // Bold
+    if (matched.startsWith('**')) {
+      elements.push(
+        <strong key={`bold-${match.index}`} className="font-semibold text-primary">
+          {matched.substring(2, matched.length - 2)}
+        </strong>
+      )
+    }
+    // Italic
+    else if (matched.startsWith('*')) {
+      elements.push(
+        <em key={`italic-${match.index}`} className="italic text-primary">
+          {matched.substring(1, matched.length - 1)}
+        </em>
+      )
+    }
+    // Code
+    else if (matched.startsWith('`')) {
+      elements.push(
+        <code
+          key={`code-${match.index}`}
+          className="bg-surface-container px-2 py-1 rounded font-mono text-sm text-on-surface"
+        >
+          {matched.substring(1, matched.length - 1)}
+        </code>
+      )
+    }
+
+    lastIndex = match.index + matched.length
   }
 
   // Agregar texto restante
   if (lastIndex < text.length) {
-    parts.push(text.slice(lastIndex))
+    elements.push(text.substring(lastIndex))
   }
 
-  return parts.length > 0 ? parts : text
+  return elements.length > 0 ? elements : [text]
 }
+
+export default MarkdownRenderer

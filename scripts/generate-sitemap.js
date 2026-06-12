@@ -12,6 +12,9 @@ const fs = require('fs');
 const path = require('path');
 const { createClient } = require('contentful');
 
+// Load environment variables from .env.local
+require('dotenv').config({ path: path.join(__dirname, '../.env.local') });
+
 const DOMAIN = 'https://cgapsicologia.com';
 const OUTPUT_PATH = path.join(__dirname, '../public/sitemap.xml');
 
@@ -55,9 +58,13 @@ async function getBlogPosts() {
     const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 
     if (!spaceId || !accessToken) {
-      console.warn('⚠️  Contentful credentials not found. Using default blog posts only.');
+      console.warn('⚠️  Contentful credentials not found in environment.');
+      console.warn('   Make sure .env.local exists with credentials');
+      console.warn('   Using default blog posts only.\n');
       return [];
     }
+
+    console.log(`✓ Fetching from Contentful Space: ${spaceId.substring(0, 8)}...`);
 
     const client = createClient({
       space: spaceId,
