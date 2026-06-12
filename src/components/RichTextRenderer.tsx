@@ -32,9 +32,6 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = ({ document }) => {
       [MARKS.SUBSCRIPT]: (text: ReactNode) => (
         <sub className="text-sm">{text}</sub>
       ),
-      [MARKS.STRIKETHROUGH]: (text: ReactNode) => (
-        <del className="line-through">{text}</del>
-      ),
     },
     renderNode: {
       // Headings
