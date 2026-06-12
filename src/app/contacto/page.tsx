@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import ContactoForm from '@/components/ContactoForm'
+// import ContactoForm from '@/components/ContactoForm'
 
 export const metadata: Metadata = {
   title: 'Contacto | Psicóloga Online - Claudia González',
@@ -82,7 +82,7 @@ export default function Contacto() {
       </section>
 
       {/* Contact Form */}
-      <ContactoForm />
+      {/* <ContactoForm /> */}
 
       {/* Hours and Availability */}
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">

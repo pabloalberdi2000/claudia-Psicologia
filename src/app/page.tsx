@@ -172,7 +172,7 @@ export default function Home() {
                 <span className="text-headline-md font-display-lg text-primary">Gratis</span>
                 <span className="text-on-surface-variant">/ 30 min</span>
               </div>
-              <button className="w-full btn-secondary py-3 rounded-lg font-label-md">Empezar ahora</button>
+              <Link href="/contacto" className="w-full block text-center btn-secondary py-3 rounded-lg font-label-md hover:scale-[0.98] transition-all">Empezar ahora</Link>
             </div>
           </div>
 
@@ -186,7 +186,7 @@ export default function Home() {
                 <span className="text-headline-md font-display-lg text-on-primary">50€</span>
                 <span className="text-on-primary-container">/ 50 min</span>
               </div>
-              <button className="w-full bg-secondary-fixed text-on-secondary-fixed py-3 rounded-lg font-label-md hover:bg-secondary-fixed-dim">Reservar sesión</button>
+              <Link href="/contacto" className="w-full block text-center bg-secondary-fixed text-on-secondary-fixed py-3 rounded-lg font-label-md hover:bg-secondary-fixed-dim transition-all">Reservar sesión</Link>
             </div>
           </div>
 
@@ -199,7 +199,7 @@ export default function Home() {
                 <span className="text-headline-md font-display-lg text-primary">180€</span>
                 <span className="text-on-surface-variant">/ pack</span>
               </div>
-              <button className="w-full btn-secondary py-3 rounded-lg font-label-md">Contratar bono</button>
+              <Link href="/contacto" className="w-full block text-center btn-secondary py-3 rounded-lg font-label-md hover:scale-[0.98] transition-all">Contratar bono</Link>
             </div>
           </div>
         </div>
