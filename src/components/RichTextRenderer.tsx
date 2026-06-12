@@ -97,35 +97,6 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = ({ document }) => {
       [BLOCKS.HR]: () => (
         <hr className="my-8 border-outline-variant" />
       ),
-      // Code Block
-      [BLOCKS.CODE]: (_node: any, children: ReactNode) => (
-        <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4">
-          <code className="font-mono text-sm">
-            {children}
-          </code>
-        </pre>
-      ),
-      // Table (si Contentful lo envía)
-      [BLOCKS.TABLE]: (_node: any, children: ReactNode) => (
-        <table className="w-full border-collapse my-4">
-          {children}
-        </table>
-      ),
-      [BLOCKS.TABLE_ROW]: (_node: any, children: ReactNode) => (
-        <tr className="border-b border-outline-variant">
-          {children}
-        </tr>
-      ),
-      [BLOCKS.TABLE_HEADER_CELL]: (_node: any, children: ReactNode) => (
-        <th className="text-left p-3 bg-surface-container font-semibold text-primary border-r border-outline-variant">
-          {children}
-        </th>
-      ),
-      [BLOCKS.TABLE_CELL]: (_node: any, children: ReactNode) => (
-        <td className="p-3 text-primary border-r border-outline-variant">
-          {children}
-        </td>
-      ),
       // Links (inline)
       [INLINES.HYPERLINK]: (node: any, children: ReactNode) => (
         <a
