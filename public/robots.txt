@@ -1,12 +1,29 @@
+# Robots.txt for cgapsicologia.com
+# Allow all crawlers to index the site
+
 User-agent: *
 Allow: /
+Disallow: /admin/
 Disallow: /api/
 Disallow: /.next/
+Disallow: /node_modules/
+Disallow: /*?*sort=
+Disallow: /*?*filter=
 
+# Specify the canonical domain to prevent duplicate content
+Host: https://cgapsicologia.com
+
+# Sitemap location
 Sitemap: https://cgapsicologia.com/sitemap.xml
 
-# Delay for aggressive crawlers
+# Google Bot specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Block aggressive crawlers
 User-agent: AhrefsBot
 User-agent: SemrushBot
 User-agent: DotBot
-Crawl-delay: 10
+User-agent: MJ12bot
+Disallow: /
