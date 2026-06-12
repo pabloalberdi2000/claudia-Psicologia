@@ -4,25 +4,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  redirects: async () => {
-    return [
-      // Redirect www to non-www
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.cgapsicologia.com',
-          },
-        ],
-        destination: 'https://cgapsicologia.com/:path*',
-        permanent: true, // 301 redirect
-      },
-      // Redirect old http protocol to https (if not behind a proxy)
-      // Note: This may not work if you're behind a reverse proxy
-      // In that case, configure it at the proxy/server level
-    ]
-  },
+  // Redirects deshabilitados para evitar loops infinitos en Vercel
+  // El redirect de www se configura mejor en Vercel Dashboard → Settings → Domains
+  // redirects: async () => {
+  //   return []
+  // },
   headers: async () => {
     return [
       {
